@@ -272,24 +272,26 @@ const HeroSection = () => {
 
       {/* Tech stack icons */}
       <motion.div
-        className="absolute bottom-10 flex items-center justify-center gap-6 text-muted-foreground overflow-x-auto max-w-full px-4"
+        className="absolute bottom-10 w-full max-w-[90vw] sm:max-w-[80vw] md:max-w-[70vw] lg:max-w-[60vw] mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
       >
-        <Code className="h-5 w-5" />
-        <span className="text-sm font-medium">React</span>
-        <span className="text-sm">•</span>
-        <span className="text-sm font-medium">TypeScript</span>
-        <span className="text-sm">•</span>
-        <span className="text-sm font-medium">Tailwind</span>
-        <span className="text-sm">•</span>
-        <span className="text-sm font-medium">Laravel</span>
-        <span className="text-sm">•</span>
-        <span className="text-sm font-medium">PHP</span>
-        <span className="text-sm">•</span>
-        <span className="text-sm font-medium">WordPress</span>
-        <Code className="h-5 w-5" />
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-muted-foreground px-2">
+          <Code className="h-4 w-4 sm:h-5 sm:w-5" />
+          <span className="text-xs sm:text-sm font-medium">React</span>
+          <span className="text-xs sm:text-sm">•</span>
+          <span className="text-xs sm:text-sm font-medium">TypeScript</span>
+          <span className="text-xs sm:text-sm">•</span>
+          <span className="text-xs sm:text-sm font-medium">Tailwind</span>
+          <span className="text-xs sm:text-sm">•</span>
+          <span className="text-xs sm:text-sm font-medium">Laravel</span>
+          <span className="text-xs sm:text-sm">•</span>
+          <span className="text-xs sm:text-sm font-medium">PHP</span>
+          <span className="text-xs sm:text-sm">•</span>
+          <span className="text-xs sm:text-sm font-medium">WordPress</span>
+          <Code className="h-4 w-4 sm:h-5 sm:w-5" />
+        </div>
       </motion.div>
 
       {/* Scroll indicator */}
