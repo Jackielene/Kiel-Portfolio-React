@@ -52,7 +52,7 @@ const CertificatesSection = () => {
       logo: cert2,
     },
     {
-      name: "Bu ild D ynamic U ser Interfaces (U I) for Websites",
+      name: "Build Dynamic User Interfaces (UI) for Websites",
       organization: "Coursera",
       date: "April 4, 2024",
       credentialId: "https://coursera.org/verify/PRGFXZDULWGC",
@@ -60,7 +60,7 @@ const CertificatesSection = () => {
       logo: cert3,
     },
     {
-      name: "Fou ndations of U ser Ex perience (U X) D esign",
+      name: "Foundations of User Experience (UX) Design",
       organization: "Coursera",
       date: "April 3, 2024",
       credentialId: "https://coursera.org/verify/K6C69P4GRC2J",
@@ -92,7 +92,7 @@ const CertificatesSection = () => {
       logo: cert7,
     },
     {
-      name: "Cybersecu rity for Everyone",
+      name: "Cybersecurity for Everyone",
       organization: "Coursera",
       date: "March 12, 2024",
       credentialId: "https://coursera.org/verify/WWAQHUVUW7SX",

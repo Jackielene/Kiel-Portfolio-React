@@ -20,6 +20,8 @@ import project7 from "../assets/project-7.png";
 import project8 from "../assets/project-8.png";
 import project9 from "../assets/project-9.png";
 import project10 from "../assets/project-10.png";
+import project11 from "../assets/project-11.png";
+
 
 interface Technology {
   name: string;
@@ -45,10 +47,30 @@ const ProjectsSection = () => {
   const projects: Project[] = [
     {
       id: "1",
+      title: "NetSafeScan",
+      description:
+        "A sleek web app that scans URLs for potential threats, built with React (Next.js) and Tailwind CSS on the front end, and Node.js, Express, and PostgreSQL on the back end. NetSafeScan demonstrates my ability to build secure and responsive full-stack applications.",
+      image: project1,
+      technologies: [
+        { name: "React(Next.js)" },
+        { name: "Tailwind CSS" },
+        { name: "Node.js" },
+        { name: "Express" },
+        { name: "PostgreSQL" },
+        { name: "OAuth" },
+        { name: "SafeBrowsing API" },
+      ],
+      liveUrl: "https://example.com/project1",
+      githubUrl: "https://github.com/Jackielene/NetSafeScan",
+      detailedDescription:
+        "NetSafeScan is a modern and responsive web application that empowers users to check the safety of URLs before visiting them. It scans links for potential threats and malicious content, helping ensure a secure browsing experience. I built NetSafeScan using React (Next.js) and Tailwind CSS for the front end, while the back end is powered by Node.js, Express, and PostgreSQL for efficient data processing and reliable storage. This project highlights my focus on security, usability, and building robust full-stack web applications.",
+    },
+    {
+      id: "2",
       title: "Siargao Travels Booking System",
       description:
         "A web-based platform built with Laravel and MySQL that allows users to browse, book, and manage resort reservations in the Siargao Islands.",
-      image: project1,
+      image: project2,
       technologies: [
         { name: "Laravel" },
         { name: "MySQL" },
@@ -62,11 +84,11 @@ const ProjectsSection = () => {
         "The Siargao Travels Booking System is a web-based platform designed to simplify and streamline the process of booking travel experiences in Siargao Island, Philippines. It allows users to explore available tour packages, reserve accommodations, and make secure online payments—all in one place.",
     },
     {
-      id: "2",
+      id: "3",
       title: "IoT-Enabled Smoke Detector System",
       description:
         "IoT-based smoke detection system providing real-time monitoring to enhance fire safety.",
-      image: project2,
+      image: project3,
       technologies: [
         { name: "Laravel" },
         { name: "MySQL" },
@@ -80,10 +102,10 @@ const ProjectsSection = () => {
         "The IoT-Enabled Smoke Detector System is an innovative solution designed to enhance fire safety by improving response time and reliability during fire emergencies. It leverages IoT technology to detect harmful smoke levels in real time and instantly alert designated contacts through SMS notifications, including GPS coordinates of the incident location.",
     },
     {
-      id: "3",
+      id: "4",
       title: "InstaBooth",
       description: "InstaBooth is a digital photobooth website that lets users capture polaroid-style images, apply filters, stickers, and downloadable png.",
-      image: project3,
+      image: project4,
       technologies: [
         { name: "ReactJS" },
         { name: "Tailwind CSS" },
@@ -95,10 +117,10 @@ const ProjectsSection = () => {
         "InstaBooth is a web-based digital photobooth that allows users to capture fun and memorable moments with a creative twist. Designed with user experience in mind, the platform lets users take instant polaroid-style photos, apply filters, choose from a variety of frames and stickers, and download the final image as a PNG file — all from the convenience of their browser.",
     },
     {
-      id: "4",
+      id: "5",
       title: "SNSU Enrollment System",
       description: "A web-based platform designed to streamline student enrollment, grade management, and faculty submissions.",
-      image: project4,
+      image: project5,
       technologies: [
         { name: "PHP" },
         { name: "HTML" },
@@ -113,10 +135,10 @@ const ProjectsSection = () => {
         "The SNSU Enrollment System is a web-based application developed for Surigao del Norte State University to streamline the student enrollment and grade management process. This system allows students to conveniently enroll in subjects, update personal information, and view their grades for currently enrolled courses.",
     },
     {
-      id: "5",
+      id: "6",
       title: "Cosmos",
       description: "Cosmos is an interactive educational website that explores the wonders of the solar system.",
-      image: project5,
+      image: project6,
       technologies: [
         { name: "ReactJS" },
         { name: "Tailwind CSS" },
@@ -128,10 +150,10 @@ const ProjectsSection = () => {
         "Cosmos is a modern web experience that explores the beauty, complexity, and wonder of the universe through an interactive and visually captivating platform. Designed to educate and inspire, Cosmos provides users with rich, dynamic content on celestial bodies, galaxies, space missions, and astronomical phenomena.",
     },
     {
-      id: "6",
+      id: "7",
       title: "Trendify E-Commerce Website",
       description: "An online platform dedicated to offering trendy and fashionable clothing.",
-      image: project6,
+      image: project7,
       technologies: [
         { name: "HTML" },
         { name: "CSS" },
@@ -144,10 +166,10 @@ const ProjectsSection = () => {
         "Trendify is a modern and responsive e-commerce website built to deliver a seamless online shopping experience. Designed with both aesthetics and functionality in mind, Trendify allows users to browse, search, and purchase the latest fashion and lifestyle products with ease.",
     },
     {
-      id: "7",
+      id: "8",
       title: "Portfolio 1",
       description: "A personal website designed to showcase your skills and projects.",
-      image: project7,
+      image: project8,
       technologies: [
         { name: "HTML" },
         { name: "CSS" },
@@ -160,10 +182,10 @@ const ProjectsSection = () => {
         "Portfolio Website 1 is a personal online portfolio designed to showcase my skills, projects, and experience as an aspiring web developer. Built with a clean and responsive layout, this website reflects both my technical abilities and design sense, providing a professional space to present who I am and what I do.",
     },  
     {
-      id: "8",
+      id: "9",
       title: "Portfolio 2",
       description: "A personal website designed to showcase your skills and projects.",
-      image: project8,
+      image: project9,
       technologies: [
         { name: "HTML" },
         { name: "CSS" },
@@ -176,10 +198,10 @@ const ProjectsSection = () => {
         "Portfolio Website 2 is a modern, fully responsive personal website developed to highlight my journey, skills, and projects as a web developer. Unlike the first version, this iteration puts a stronger emphasis on design aesthetics, user interactivity, and animation to create a more engaging user experience.",
     },
     {
-      id: "9",
+      id: "10",
       title: "Scoopify",
       description: "Scoopify is a WordPress-based website dedicated to all things ice cream. It features delicious content including flavor guides, homemade recipes, product reviews, and the latest trends in frozen desserts.",
-      image: project9,
+      image: project10,
       technologies: [
         { name: "WordPress" },
         { name: "Elementor" },
@@ -191,10 +213,10 @@ const ProjectsSection = () => {
         "Scoopify is a visually appealing and user-friendly web application designed for an ice cream shop business. The platform allows customers to browse a curated selection of ice cream flavors, view product details, and place orders with ease. Scoopify aims to enhance the customer experience by offering a seamless online ordering system that mirrors the delight of walking into a real ice cream parlor.",
     },
     {
-      id: "10",
+      id: "11",
       title: "Marius E-Commerce Website",
       description: "Marius is a modern online clothing shop offering stylish and affordable fashion for all. From everyday essentials to trend-setting pieces, we bring the latest looks straight to your doorstep.",
-      image: project10,
+      image: project11,
       technologies: [
         { name: "PHP" },
         { name: "HTML" },

@@ -220,3 +220,14 @@
     animation: pulse-subtle 4s ease-in-out infinite;
   }
 }
+
+/* Floating dots styles */
+.floating-dot {
+  position: absolute;
+  top: var(--dot-top);
+  left: var(--dot-left);
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}

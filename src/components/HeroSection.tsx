@@ -35,9 +35,9 @@ const HeroSection = () => {
       const distX = (e.clientX - centerX) / (window.innerWidth / 2)
       const distY = (e.clientY - centerY) / (window.innerHeight / 2)
 
-      // Apply subtle tilt effect (max 5 degrees)
-      const tiltX = distY * 5
-      const tiltY = -distX * 5
+      // Apply subtle tilt effect (max 3 degrees) and prevent upside down rotation
+      const tiltX = Math.min(Math.max(distY * 3, -3), 3)
+      const tiltY = Math.min(Math.max(-distX * 3, -3), 3)
 
       profileElement.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`
     }
@@ -47,11 +47,19 @@ const HeroSection = () => {
       profileElement.style.transition = "transform 0.5s ease"
     }
 
+    const handleScroll = () => {
+      // Reset transform when scrolling
+      profileElement.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)"
+      profileElement.style.transition = "transform 0.3s ease"
+    }
+
     window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("scroll", handleScroll)
     profileElement.addEventListener("mouseleave", handleMouseLeave)
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("scroll", handleScroll)
       if (profileElement) {
         profileElement.removeEventListener("mouseleave", handleMouseLeave)
       }
@@ -79,8 +87,7 @@ const HeroSection = () => {
             type: "spring",
             stiffness: 100,
           }}
-          className="relative transition-transform duration-300 ease-out"
-          style={{ transformStyle: "preserve-3d" }}
+          className="relative transition-transform duration-300 ease-out preserve-3d"
         >
           <div className="relative h-[280px] w-[280px] md:h-[320px] md:w-[320px] rounded-full overflow-hidden">
             {/* Glowing backdrop */}
@@ -110,11 +117,11 @@ const HeroSection = () => {
             {[...Array(5)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute h-2 w-2 rounded-full bg-primary/80"
+                className="absolute h-2 w-2 rounded-full bg-primary/80 floating-dot"
                 style={{
-                  top: `${20 + i * 15}%`,
-                  left: i % 2 === 0 ? "-5%" : "105%",
-                }}
+                  "--dot-top": `${20 + i * 15}%`,
+                  "--dot-left": i % 2 === 0 ? "-5%" : "105%",
+                } as React.CSSProperties}
                 animate={{
                   y: [0, -10, 0],
                   opacity: [0.5, 1, 0.5],
@@ -272,25 +279,57 @@ const HeroSection = () => {
 
       {/* Tech stack icons */}
       <motion.div
-        className="absolute bottom-10 w-full max-w-[90vw] sm:max-w-[80vw] md:max-w-[70vw] lg:max-w-[60vw] mx-auto"
+        className="absolute bottom-10 w-full max-w-[90vw] sm:max-w-[80vw] md:max-w-[70vw] lg:max-w-[60vw] mx-auto mt-40 sm:mt-44 md:mt-48 lg:mt-52"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
       >
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-muted-foreground px-2">
-          <Code className="h-4 w-4 sm:h-5 sm:w-5" />
-          <span className="text-xs sm:text-sm font-medium">React</span>
-          <span className="text-xs sm:text-sm">•</span>
-          <span className="text-xs sm:text-sm font-medium">TypeScript</span>
-          <span className="text-xs sm:text-sm">•</span>
-          <span className="text-xs sm:text-sm font-medium">Tailwind</span>
-          <span className="text-xs sm:text-sm">•</span>
-          <span className="text-xs sm:text-sm font-medium">Laravel</span>
-          <span className="text-xs sm:text-sm">•</span>
-          <span className="text-xs sm:text-sm font-medium">PHP</span>
-          <span className="text-xs sm:text-sm">•</span>
-          <span className="text-xs sm:text-sm font-medium">WordPress</span>
-          <Code className="h-4 w-4 sm:h-5 sm:w-5" />
+        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 md:gap-4 text-muted-foreground px-1 sm:px-2 py-4">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <Code className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5" />
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium">ReactJS</span>
+          </div>
+          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium">TypeScript</span>
+          </div>
+          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium">NextJS</span>
+          </div>
+          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium">NodeJS</span>
+          </div>
+          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium">ExpressJS</span>
+          </div>
+          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium">Tailwind</span>
+          </div>
+          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium">Laravel</span>
+          </div>
+          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium">PHP</span>
+          </div>
+          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium">PostgreSQL</span>
+          </div>
+          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium">MySQL</span>
+          </div>
+          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium">WordPress</span>
+            <Code className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5" />
+          </div>
         </div>
       </motion.div>
 
