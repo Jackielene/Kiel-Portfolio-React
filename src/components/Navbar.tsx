@@ -3,6 +3,7 @@ import { Sun, Moon, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 import logoImage from "../assets/j-logo.png";
+import SAOText from "./ui/SAOText";
 
 interface NavbarProps {
   sections?: string[];
@@ -88,15 +89,13 @@ const Navbar = ({
             <motion.button
               key={section}
               onClick={() => handleSectionClick(section)}
-              className={`relative text-sm font-medium transition-colors duration-300 cursor-pointer group ${
-                activeSection === section
-                  ? "text-primary"
-                  : "text-foreground hover:text-primary"
-              }`}
+              className="relative cursor-pointer group"
               whileHover={{ scale: 1.07 }}
               whileTap={{ scale: 0.95 }}
             >
-              {section}
+              <SAOText variant="p" className={activeSection === section ? "text-primary" : "text-foreground hover:text-primary"}>
+                {section}
+              </SAOText>
               <span
                 className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
                   activeSection === section
@@ -147,16 +146,14 @@ const Navbar = ({
                 <motion.button
                   key={section}
                   onClick={() => handleSectionClick(section)}
-                  className={`py-2 text-left text-sm font-medium cursor-pointer transition-colors duration-300 ${
-                    activeSection === section
-                      ? "text-primary font-semibold"
-                      : "text-foreground hover:text-primary"
-                  }`}
+                  className="py-2 text-left cursor-pointer transition-colors duration-300"
                   whileHover={{ x: 10, scale: 1.03 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  {section}
+                  <SAOText variant="p" className={activeSection === section ? "text-primary font-semibold" : "text-foreground hover:text-primary"}>
+                    {section}
+                  </SAOText>
                 </motion.button>
               ))}
 

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ExternalLink } from "lucide-react";
+import { SAOText } from "./SAOText";
 
 // Import certificate images and PDFs
 import cert1 from "../assets/certs/cert-1.png";
@@ -111,7 +112,7 @@ const CertificatesSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-2">Certificates</h2>
+          <SAOText variant="h2" className="mb-2">Certificates</SAOText>
           <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Professional certifications that validate my expertise and knowledge
@@ -161,7 +162,7 @@ const CertificatesSection = () => {
               </div>
               <div className="p-6">
                 <motion.h3 
-                  className="font-semibold text-lg mb-1"
+                  className="font-bold text-lg mb-1"
                   animate={{ 
                     color: hoveredIndex === index ? 'var(--primary)' : 'var(--foreground)'
                   }}

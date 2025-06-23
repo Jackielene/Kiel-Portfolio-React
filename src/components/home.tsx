@@ -8,9 +8,11 @@ import ProjectsSection from "./ProjectSection"
 import CertificatesSection from "./Certificates"
 import ThemeProvider, { useTheme } from "./ThemeProvider"
 import { Linkedin, Mail, Phone, Globe } from "lucide-react"
+import { SAOText } from "./SAOText"
 // Import images
 import profileImage from "../assets/profile.png"
 import logoImage from "../assets/j-logo.png"
+import TidioChat from "./TidioChat"
 
 const AboutSection = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -42,6 +44,21 @@ const AboutSection = () => {
       name: "Tailwind CSS",
       logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
       level: 90,
+    },
+    {
+      name: "Node.js",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+      level: 80,
+    },
+    {
+      name: "Express",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+      level: 75,
+    },
+    {
+      name: "PostgreSQL",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      level: 70,
     },
   ]
 
@@ -91,7 +108,7 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="bg-gradient-to-r from-[#8a2be2] to-[#6a5acd]/30 w-72 py-4 px-6 rounded-full mb-10"
           >
-            <h2 className="text-3xl font-bold text-white uppercase">About me</h2>
+            <SAOText variant="h2" className="text-white uppercase">About me</SAOText>
           </motion.div>
 
           <div className="flex flex-col md:flex-row gap-10 items-center">
@@ -102,15 +119,15 @@ const AboutSection = () => {
               viewport={{ once: true }}
               className="md:w-1/2"
             >
-              <h3 className={`text-3xl font-medium mb-4 px-4 sm:px-6 md:px-8 ${theme === "dark" ? "text-white" : "text-black"}`}>Hi!</h3>
-              <p className={`${theme === "dark" ? "text-white" : "text-black"} mb-4 px-4 sm:px-6 md:px-8 text-justify text-sm sm:text-base`}>
+              <SAOText variant="h3" className={`mb-4 px-4 sm:px-6 md:px-8 ${theme === "dark" ? "text-white" : "text-black"}`}>Hi!</SAOText>
+              <SAOText variant="p" className={`${theme === "dark" ? "text-white" : "text-black"} mb-4 px-4 sm:px-6 md:px-8 text-justify text-sm sm:text-base`}>
                 My name is Jackielene Pomoy. I am a Frontend Developer based in Siargao Islands with experience through projects
                 and freelancing.
-              </p>
-              <p className={`${theme === "dark" ? "text-white" : "text-black"} mb-6 px-4 sm:px-6 md:px-8 text-justify text-sm sm:text-base`}>
+              </SAOText>
+              <SAOText variant="p" className={`${theme === "dark" ? "text-white" : "text-black"} mb-6 px-4 sm:px-6 md:px-8 text-justify text-sm sm:text-base`}>
                 My objective: Challenge myself in a new environment to learn, develop, improve my skills through
                 different projects and contribute more to the company with my abilities.
-              </p>
+              </SAOText>
 
               <div className="mt-10 px-4 sm:px-6 md:px-8">
                 <h3 className={`text-2xl font-bold mb-4 sm:mb-6 ${theme === "dark" ? "text-white" : "text-black"}`}>Contact</h3>
@@ -221,7 +238,7 @@ const AboutSection = () => {
             </div>
 
             <div className="grid grid-cols-3 gap-4">
-              {skills.slice(0, 9).map((skill, index) => (
+              {skills.map((skill, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -229,11 +246,14 @@ const AboutSection = () => {
                   transition={{ duration: 0.1, delay: index * 0.05 }}
                   whileHover={{ scale: 1.1 }}
                   viewport={{ once: true }}
-                  className={`${
-                    theme === "dark" 
-                      ? "bg-[#1a1a2e] hover:bg-[#1a1a2e]/80 shadow-[0_4px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_16px_rgba(0,191,255,0.3)]" 
-                      : "bg-slate-100 hover:bg-slate-200 shadow-[0_4px_8px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
-                  } rounded-xl p-3 flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-1`}
+                  className={
+                    (
+                      theme === "dark"
+                        ? "bg-[#1a1a2e] hover:bg-[#1a1a2e]/80 shadow-[0_4px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_16px_rgba(0,191,255,0.3)]"
+                        : "bg-slate-100 hover:bg-slate-200 shadow-[0_4px_8px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
+                    ) +
+                    " rounded-xl p-3 flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-1"
+                  }
                 >
                   <div className="w-12 h-12 mb-2">
                     <img
@@ -429,9 +449,7 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <div className="bg-gradient-to-r from-[#8a2be2] to-[#6a5acd]/30 w-72 py-4 px-6 rounded-full mb-6 mx-auto">
-            <h2 className="text-3xl font-bold text-white uppercase">Get In Touch</h2>
-          </div>
+          <SAOText variant="h2" className="text-3xl font-bold uppercase mb-6 mx-auto">Get In Touch</SAOText>
           <p className={`${theme === "dark" ? "text-white" : "text-black"} max-w-2xl mx-auto`}>
             Have a project in mind or want to chat? Feel free to reach out! I'm always open to discussing new projects and opportunities.
           </p>
@@ -445,7 +463,7 @@ const ContactSection = () => {
             viewport={{ once: true }}
             className={`${theme === "dark" ? "bg-[#1a1a2e]/80" : "bg-gradient-to-r from-[#6a5acd]/30 to-[#8a2be2]/10"} rounded-[40px] p-8 shadow-md`}
           >
-            <h3 className="text-2xl font-semibold mb-8 bg-gradient-to-r from-[#8a2be2] to-[#6a5acd]/30 w-64 py-2 px-6 rounded-full text-white">Contact Information</h3>
+            <h3 className="text-2xl font-semibold mb-8 bg-gradient-to-r from-[#8a2be2] to-[#6a5acd]/30 w-64 py-2 px-6 rounded-full text-white whitespace-nowrap">Contact Information</h3>
             <div className="space-y-6">
               <motion.div 
                 className="flex items-center space-x-4"
@@ -497,7 +515,7 @@ const ContactSection = () => {
                   href="https://www.linkedin.com/in/jackielene-pomoy/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ y: -5, scale: 1.1 }}
+                  whileHover={{ y: -2, scale: 1.1 }}
                   className={`w-12 h-12 ${theme === "dark" ? "bg-[#1a1a2e]" : "bg-slate-200"} rounded-full flex items-center justify-center hover:bg-[#6a5acd] transition-colors`}
                 >
                   <Linkedin className={`h-5 w-5 ${theme === "dark" ? "text-white" : "text-black"} hover:text-white`} />
@@ -506,7 +524,7 @@ const ContactSection = () => {
                   href="https://github.com/Jackielene"
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ y: -5, scale: 1.1 }}
+                  whileHover={{ y: -2, scale: 1.1 }}
                   className={`w-12 h-12 ${theme === "dark" ? "bg-[#1a1a2e]" : "bg-slate-200"} rounded-full flex items-center justify-center hover:bg-[#6a5acd] transition-colors`}
                 >
                   <svg
@@ -690,7 +708,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
           {/* Brand Section */}
           <motion.div 
-            className="flex items-center space-x-4 cursor-pointer"
+            className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 cursor-pointer text-center md:text-left"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400 }}
             onClick={scrollToHero}
@@ -702,14 +720,13 @@ const Footer = () => {
               <img 
                 src={logoImage} 
                 alt="J Logo" 
-                className="h-12 w-auto"
+                className="h-12 w-auto mx-auto md:mx-0"
               />
             </motion.div>
             <div>
               <h3 className={`text-2xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`}>Portfolio</h3>
-              <p className={`${theme === "dark" ? "text-gray-300" : "text-gray-600"} text-sm`}>
-                Creating digital experiences
-              </p>
+              <p className={`${theme === "dark" ? "text-gray-300" : "text-gray-600"} text-sm`}>Creating digital experiences</p>
+              <p className="text-xs text-[#00bfff] mt-1 font-semibold">Let's build something great together!</p>
             </div>
           </motion.div>
 
@@ -723,15 +740,15 @@ const Footer = () => {
             ].map((link) => (
               <motion.div 
                 key={link.name}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -2 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
                 <button 
                   onClick={() => scrollToSection(link.id)}
                   className={`${theme === "dark" ? "text-gray-300 hover:text-[#00bfff]" : "text-gray-600 hover:text-[#1a1a2e]"} 
-                    transition-all duration-300 flex items-center group relative`}
+                    transition-all duration-300 flex items-center group relative font-medium`}
                 >
-                  {link.name}
+                  <SAOText variant="p" className={`${theme === "dark" ? "text-white" : "text-black"}`}>{link.name}</SAOText>
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00bfff] group-hover:w-full transition-all duration-300"></span>
                 </button>
               </motion.div>
@@ -741,10 +758,23 @@ const Footer = () => {
           {/* Social Links */}
           <div className="flex items-center space-x-4">
             <motion.a 
-              href="https://www.linkedin.com/in/jackielene-pomoy/"
+              href="mailto:pomoy.jackielene.s@gmail.com"
+              title="Email"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ y: -5, scale: 1.1 }}
+              whileHover={{ y: -2, scale: 1.1 }}
+              className={`w-10 h-10 ${theme === "dark" ? "bg-[#1a1a2e]" : "bg-white"} 
+                rounded-full flex items-center justify-center hover:bg-[#6a5acd] transition-all duration-300 
+                shadow-lg hover:shadow-[#6a5acd]/50`}
+            >
+              <Mail className={`h-5 w-5 ${theme === "dark" ? "text-white" : "text-black"} hover:text-white`} />
+            </motion.a>
+            <motion.a 
+              href="https://www.linkedin.com/in/jackielene-pomoy/"
+              title="LinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -2, scale: 1.1 }}
               className={`w-10 h-10 ${theme === "dark" ? "bg-[#1a1a2e]" : "bg-white"} 
                 rounded-full flex items-center justify-center hover:bg-[#6a5acd] transition-all duration-300 
                 shadow-lg hover:shadow-[#6a5acd]/50`}
@@ -753,9 +783,10 @@ const Footer = () => {
             </motion.a>
             <motion.a 
               href="https://github.com/Jackielene"
+              title="GitHub"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ y: -5, scale: 1.1 }}
+              whileHover={{ y: -2, scale: 1.1 }}
               className={`w-10 h-10 ${theme === "dark" ? "bg-[#1a1a2e]" : "bg-white"} 
                 rounded-full flex items-center justify-center hover:bg-[#6a5acd] transition-all duration-300 
                 shadow-lg hover:shadow-[#6a5acd]/50`}
@@ -778,16 +809,26 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Back to Top Button */}
+        <button
+          onClick={scrollToHero}
+          className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-[#00bfff] to-[#8a2be2] text-white p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 focus:outline-none"
+          title="Back to Top"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" /></svg>
+        </button>
+
         {/* Bottom Bar */}
-        <div className={`pt-6 border-t ${theme === "dark" ? "border-gray-800" : "border-gray-200"}`}>
+        <div className={`pt-6 border-t ${theme === "dark" ? "border-gray-800" : "border-gray-200"} shadow-t-lg`}> 
           <div className="flex flex-col md:flex-row justify-between items-center">
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className={`${theme === "dark" ? "text-gray-400" : "text-gray-600"} text-sm`}
+              className={`${theme === "dark" ? "text-gray-400" : "text-gray-600"} text-sm flex items-center`}
             >
-              © {new Date().getFullYear()} Jackielene Pomoy. All rights reserved.
+              <svg className="h-4 w-4 mr-1 inline-block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-1.5A6.5 6.5 0 1110 3.5a6.5 6.5 0 010 13z" /></svg>
+              <span>© {new Date().getFullYear()} Jackielene Pomoy. All rights reserved.</span>
             </motion.p>
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -795,7 +836,7 @@ const Footer = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mt-4 md:mt-0"
             >
-              <p className={`${theme === "dark" ? "text-gray-400" : "text-gray-600"} text-sm flex items-center`}>
+              <p className={`${theme === "dark" ? "text-[#00bfff]" : "text-[#8a2be2]"} text-sm flex items-center font-semibold tracking-wide`}> 
                 Made with 
                 <motion.span 
                   className="mx-1"
@@ -813,184 +854,139 @@ const Footer = () => {
 
       {/* Animated gradient border */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00bfff] via-[#8a2be2] to-[#00bfff] animate-gradient-x"></div>
+      {/* Divider/Shadow above footer */}
+      <div className="absolute top-0 left-0 right-0 h-2 shadow-lg z-20"></div>
     </footer>
   );
 };
 
-const ScrollToTop = () => {
-  const [isVisible, setIsVisible] = useState(false)
+const LoadingSpinner = () => {
+  const [audio] = useState(new Audio('/sounds/loading-sound.mp3'));
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
+    const playAudio = async () => {
+      try {
+        audio.volume = 0.5;
+        await audio.play();
+      } catch (error) {
+        console.error('Error playing audio:', error);
       }
-    }
+    };
+    
+    playAudio();
+    
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, [audio]);
 
-    window.addEventListener("scroll", toggleVisibility)
-    return () => window.removeEventListener("scroll", toggleVisibility)
-  }, [])
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    })
-  }
-
-  return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.5 }}
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-3 bg-[#8a2be2] text-white rounded-full shadow-lg z-50 hover:bg-[#6a5acd] transition-colors focus:outline-none focus:ring-2 focus:ring-[#8a2be2]/50"
-          aria-label="Scroll to top"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-5 w-5"
-          >
-            <polyline points="18 15 12 9 6 15"></polyline>
-          </svg>
-        </motion.button>
-      )}
-    </AnimatePresence>
-  )
-}
-
-const LoadingSpinner = () => {
   return (
     <motion.div
       key="loader"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 flex items-center justify-center bg-[#0f0c29] z-50"
+      className="fixed inset-0 flex items-center justify-center bg-black z-50"
     >
-      <div className="relative">
-        {/* Outer Ring */}
+      {/* Cyberpunk Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(0,191,255,0.1)_50%,transparent_100%)] bg-[length:100%_8px] animate-grid"></div>
+      
+      {/* Main Container */}
+      <div className="relative w-full max-w-2xl mx-auto px-4">
+        {/* Hexagon Border */}
         <motion.div
-          animate={{
-            rotate: 360,
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="w-32 h-32 rounded-full border-4 border-transparent"
-          style={{
-            borderTopColor: "#00bfff",
-            borderRightColor: "#8a2be2",
-            borderBottomColor: "#00bfff",
-            borderLeftColor: "#8a2be2",
-          }}
-        />
-
-        {/* Inner Ring */}
-        <motion.div
-          animate={{
-            rotate: -360,
-            scale: [1, 0.9, 1],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute inset-0 w-24 h-24 m-auto rounded-full border-4 border-transparent"
-          style={{
-            borderTopColor: "#8a2be2",
-            borderRightColor: "#00bfff",
-            borderBottomColor: "#8a2be2",
-            borderLeftColor: "#00bfff",
-          }}
-        />
-
-        {/* Center Circle */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 1, 0.5],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute inset-0 w-16 h-16 m-auto rounded-full bg-gradient-to-r from-[#00bfff] to-[#8a2be2]"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="relative"
         >
-          {/* Pulsing Core */}
-          <motion.div
-            animate={{
-              scale: [1, 1.5, 1],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute inset-0 w-full h-full rounded-full bg-white/20 backdrop-blur-sm"
-          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#00bfff] to-[#8a2be2] rounded-lg blur-xl opacity-50"></div>
+          <div className="relative bg-black/90 border-2 border-[#00bfff] rounded-lg p-8 overflow-hidden">
+            {/* Loading Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="text-center"
+            >
+              <motion.h2
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00bfff] to-[#8a2be2] mb-4"
+              >
+                LINK START
+              </motion.h2>
+              
+              {/* Loading Bar */}
+              <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden mb-4">
+                <motion.div
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 2, ease: "easeInOut" }}
+                  className="h-full bg-gradient-to-r from-[#00bfff] to-[#8a2be2]"
+                />
+              </div>
+
+              {/* Status Text */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+                className="text-[#00bfff] text-sm font-mono"
+              >
+                <motion.span
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    ease: "easeInOut"
+                  }}
+                >
+                  INITIALIZING SYSTEM...
+                </motion.span>
+              </motion.div>
+            </motion.div>
+
+            {/* Decorative Elements */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00bfff] to-[#8a2be2]"></div>
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#8a2be2] to-[#00bfff]"></div>
+            
+            {/* Corner Decorations */}
+            <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-[#00bfff]"></div>
+            <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-[#8a2be2]"></div>
+            <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-[#8a2be2]"></div>
+            <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-[#00bfff]"></div>
+          </div>
         </motion.div>
 
-        {/* Orbital Particles */}
-        {[...Array(6)].map((_, i) => (
+        {/* Floating Particles */}
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            animate={{
-              rotate: 360,
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 1, 0.3],
+            initial={{ 
+              x: Math.random() * 100 - 50,
+              y: Math.random() * 100 - 50,
+              opacity: 0 
+            }}
+            animate={{ 
+              x: Math.random() * 200 - 100,
+              y: Math.random() * 200 - 100,
+              opacity: [0, 1, 0]
             }}
             transition={{
               duration: 2,
               repeat: Infinity,
-              ease: "linear",
-              delay: i * 0.2,
+              delay: i * 0.1
             }}
-            className="absolute w-3 h-3 rounded-full bg-gradient-to-r from-[#00bfff] to-[#8a2be2]"
+            className="absolute w-1 h-1 bg-[#00bfff] rounded-full"
             style={{
-              top: "50%",
-              left: "50%",
-              transform: `rotate(${i * 60}deg) translateX(48px)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`
             }}
           />
         ))}
-
-        {/* Loading Text */}
-        <motion.div
-          animate={{
-            opacity: [0.5, 1, 0.5],
-            y: [0, -5, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-transparent bg-clip-text bg-gradient-to-r from-[#00bfff] to-[#8a2be2] text-xl font-medium tracking-wider"
-        >
-          Loading...
-        </motion.div>
-
-        {/* Glowing Effects */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#00bfff]/10 to-[#8a2be2]/10 rounded-full blur-2xl" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#00bfff]/5 to-[#8a2be2]/5 rounded-full blur-3xl" />
       </div>
     </motion.div>
   );
@@ -1029,7 +1025,7 @@ const Home = () => {
               <AboutSection />
               <ContactSection />
               <Footer />
-              <ScrollToTop />
+              <TidioChat />
             </motion.div>
           )}
         </AnimatePresence>

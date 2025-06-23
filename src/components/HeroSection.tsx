@@ -1,11 +1,12 @@
 import { useEffect, useState, useRef } from "react"
 import { motion } from "framer-motion"
-import { ArrowDown, Code, Github, Linkedin, Mail } from "lucide-react"
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
 import { Button } from "./ui/button"
 import ParticleBackground from "./HeroSection/ParticleBackground"
 // Import profile image and resume
 import profileImage from "../assets/profile.png"
 import resumePDF from "../assets/Resume.pdf" // Import the resume file
+import { SAOText } from "./SAOText"
 
 const HeroSection = () => {
   // Animation for text reveal effect
@@ -144,7 +145,9 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="mb-2 text-xl font-medium text-primary md:text-2xl">Hello, I'm</h2>
+            <SAOText variant="h2" className="mb-2">
+              Hello, I'm
+            </SAOText>
           </motion.div>
 
           {/* Enhanced animated name */}
@@ -154,63 +157,56 @@ const HeroSection = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="flex flex-wrap justify-center text-3xl font-bold tracking-tight md:justify-start md:text-5xl lg:text-6xl">
+            <SAOText variant="h1" className="flex md:whitespace-nowrap flex-wrap md:flex-nowrap justify-center md:justify-start">
               {nameArray.map((letter, index) => (
                 <motion.span
                   key={index}
                   className={`${letterClass} inline-block`}
                   initial={{
                     opacity: 0,
-                    y: 50,
-                    rotateY: 90,
-                    filter: "blur(8px)",
+                    y: 20,
                   }}
                   animate={{
                     opacity: 1,
                     y: 0,
-                    rotateY: 0,
-                    filter: "blur(0px)",
                   }}
                   transition={{
-                    duration: 0.5,
-                    delay: 0.5 + index * 0.1,
+                    duration: 0.3,
+                    delay: 0.5 + index * 0.05,
                     ease: "easeOut",
                   }}
                   whileHover={{
-                    scale: 1.2,
-                    color: "#7c3aed",
-                    transition: { duration: 0.1 }, // Changed from 0.2 to 0.1 for faster hover effect
+                    scale: 1.1,
+                    transition: { duration: 0.2 },
                   }}
                 >
-                  <span className="relative inline-block bg-gradient-to-br from-primary to-purple-500 bg-clip-text text-transparent dark:from-primary dark:to-purple-400">
-                    {letter === " " ? "\u00A0" : letter}
-                    <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-gradient-to-r from-primary to-purple-500 transition-all duration-300 group-hover:w-full"></span>
-                  </span>
+                  {letter === " " ? "\u00A0" : letter}
                 </motion.span>
               ))}
-            </h1>
+            </SAOText>
 
             {/* Animated underline */}
             <motion.div
-              className="mx-auto mt-2 h-1 w-0 rounded-full bg-gradient-to-r from-primary to-purple-500 dark:from-primary dark:to-purple-400 md:ml-0 md:mr-auto"
+              className="mx-auto mt-2 h-0.5 w-0 rounded-full bg-gradient-to-r from-[#00bfff] to-[#8a2be2] md:ml-0 md:mr-auto"
               initial={{ width: "0%" }}
               animate={{ width: "80%" }}
-              transition={{ delay: 2.5, duration: 0.8, ease: "easeInOut" }}
+              transition={{ delay: 2, duration: 0.8, ease: "easeInOut" }}
             />
           </motion.div>
 
-          <motion.p
-            className="mb-8 text-base text-muted-foreground text-center max-w-md mx-auto md:text-lg lg:text-xl"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            I build beautiful, interactive, and responsive web experiences with modern technologies and creative
-            solutions.
-          </motion.p>
+            <SAOText variant="p" className="mb-8 text-center max-w-md mx-auto md:text-left">
+              I build beautiful, interactive, and responsive web experiences with modern technologies and creative
+              solutions.
+            </SAOText>
+          </motion.div>
 
           <motion.div
-            className="flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start"
+            className="flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start mb-16 sm:mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -276,75 +272,6 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Tech stack icons */}
-      <motion.div
-        className="absolute bottom-10 w-full max-w-[90vw] sm:max-w-[80vw] md:max-w-[70vw] lg:max-w-[60vw] mx-auto mt-40 sm:mt-44 md:mt-48 lg:mt-52"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1 }}
-      >
-        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 md:gap-4 text-muted-foreground px-1 sm:px-2 py-4">
-          <div className="flex items-center gap-1 sm:gap-2">
-            <Code className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5" />
-            <span className="text-[10px] sm:text-xs md:text-sm font-medium">ReactJS</span>
-          </div>
-          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <span className="text-[10px] sm:text-xs md:text-sm font-medium">TypeScript</span>
-          </div>
-          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <span className="text-[10px] sm:text-xs md:text-sm font-medium">NextJS</span>
-          </div>
-          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <span className="text-[10px] sm:text-xs md:text-sm font-medium">NodeJS</span>
-          </div>
-          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <span className="text-[10px] sm:text-xs md:text-sm font-medium">ExpressJS</span>
-          </div>
-          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <span className="text-[10px] sm:text-xs md:text-sm font-medium">Tailwind</span>
-          </div>
-          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <span className="text-[10px] sm:text-xs md:text-sm font-medium">Laravel</span>
-          </div>
-          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <span className="text-[10px] sm:text-xs md:text-sm font-medium">PHP</span>
-          </div>
-          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <span className="text-[10px] sm:text-xs md:text-sm font-medium">PostgreSQL</span>
-          </div>
-          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <span className="text-[10px] sm:text-xs md:text-sm font-medium">MySQL</span>
-          </div>
-          <span className="text-[10px] sm:text-xs md:text-sm">•</span>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <span className="text-[10px] sm:text-xs md:text-sm font-medium">WordPress</span>
-            <Code className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5" />
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{
-          opacity: { delay: 1.5, duration: 1 },
-          y: { delay: 1.5, duration: 1.5, repeat: Number.POSITIVE_INFINITY },
-        }}
-      >
-        <ArrowDown className="h-6 w-6 text-muted-foreground" />
-      </motion.div>
     </section>
   )
 }

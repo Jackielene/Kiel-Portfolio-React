@@ -8,6 +8,7 @@ import {
 } from ".././components/ui/dialog";
 import { Button } from ".././components/ui/button";
 import { ExternalLink, Github, X } from "lucide-react";
+import { SAOText } from "./SAOText";
 
 // Import project images
 import project1 from "../assets/project-1.png";
@@ -226,7 +227,7 @@ const ProjectsSection = () => {
       liveUrl: "https://example.com/project6",
       githubUrl: "https://github.com/username/project6",
       detailedDescription:
-        "Marius E-Commerce Website is a modern and fully responsive online shopping platform built to deliver a smooth and engaging user experience. Designed for a fashion and lifestyle brand, Marius showcases a sleek product catalog, user-friendly navigation, and secure checkout functionality tailored to meet the needs of today’s digital shoppers.",
+        "Marius E-Commerce Website is a modern and fully responsive online shopping platform built to deliver a smooth and engaging user experience. Designed for a fashion and lifestyle brand, Marius showcases a sleek product catalog, user-friendly navigation, and secure checkout functionality tailored to meet the needs of today's digital shoppers.",
     },
   ];
 
@@ -275,9 +276,9 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <SAOText variant="h2" className="mb-4">
             My Projects
-          </h2>
+          </SAOText>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Explore my recent work showcasing my skills in front-end
             development, UI/UX design, and interactive web applications.
@@ -310,7 +311,7 @@ const ProjectsSection = () => {
                   />
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">
+                  <h3 className="text-xl font-bold mb-2">
                     {project.title}
                   </h3>
                   <p className="text-muted-foreground mb-4">
