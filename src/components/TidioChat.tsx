@@ -13,7 +13,7 @@ const TidioChat = () => {
       #tidio-chat {
         left: 0 !important;
         right: auto !important;
-        bottom: 100px !important;
+        bottom: 120px !important;
         position: fixed !important;
         z-index: 2147483647 !important;
         cursor: grab !important;
@@ -21,7 +21,7 @@ const TidioChat = () => {
       #tidio-chat-iframe {
         left: 0 !important;
         right: auto !important;
-        bottom: 100px !important;
+        bottom: 120px !important;
         position: fixed !important;
         z-index: 2147483647 !important;
         cursor: grab !important;
@@ -29,6 +29,7 @@ const TidioChat = () => {
       .tidio-chat {
         left: 0 !important;
         right: auto !important;
+        bottom: 120px !important;
         position: fixed !important;
         z-index: 2147483647 !important;
         cursor: grab !important;
@@ -36,6 +37,7 @@ const TidioChat = () => {
       .tidio-chat-iframe {
         left: 0 !important;
         right: auto !important;
+        bottom: 120px !important;
         position: fixed !important;
         z-index: 2147483647 !important;
         cursor: grab !important;
