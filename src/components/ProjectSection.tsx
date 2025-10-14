@@ -292,48 +292,150 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {projects.map((project) => (
+          {projects.map((project, idx) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
-              whileHover={{ y: -10 }}
-              className="h-full"
+              whileHover={{ 
+                y: -12,
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              className="h-full group perspective-1000"
             >
               <Card
-                className="overflow-hidden h-full cursor-pointer bg-card hover:shadow-xl transition-all duration-300"
+                className="relative overflow-hidden h-full cursor-pointer transition-all duration-500 
+                  bg-gradient-to-br from-card/80 via-card/60 to-card/80 backdrop-blur-xl
+                  border-2 border-primary/10 hover:border-primary/30
+                  shadow-lg hover:shadow-2xl hover:shadow-primary/20
+                  before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/5 before:via-purple-500/5 before:to-primary/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
                 onClick={() => openProjectModal(project)}
+                style={{
+                  transform: 'translateZ(0)',
+                }}
               >
-                <div className="relative h-48 overflow-hidden">
-                  <img
+                {/* Gradient border glow effect */}
+                <div className="absolute -inset-[1px] bg-gradient-to-r from-primary/0 via-primary/50 to-purple-500/50 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500 -z-10 rounded-lg" />
+                
+                {/* Image container with overlay effects */}
+                <div className="relative h-56 overflow-hidden">
+                  {/* Animated gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay" />
+                  
+                  {/* Shimmer effect on hover */}
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out z-20 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+                  
+                  <motion.img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                   />
+                  
+                  {/* Corner accent */}
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Project number badge */}
+                  <motion.div 
+                    className="absolute top-4 left-4 w-10 h-10 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center font-bold text-primary-foreground shadow-lg"
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      delay: idx * 0.05,
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15
+                    }}
+                  >
+                    {String(idx + 1).padStart(2, '0')}
+                  </motion.div>
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2">
+
+                <CardContent className="p-6 relative">
+                  {/* Floating particles effect */}
+                  <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-primary/40 blur-sm animate-pulse-subtle" />
+                  <div className="absolute bottom-4 left-4 w-1 h-1 rounded-full bg-purple-500/40 blur-sm animate-pulse" style={{ animationDelay: '0.5s' }} />
+                  
+                  <motion.h3 
+                    className="text-xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text"
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     {project.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
+                  </motion.h3>
+                  
+                  <p className="text-muted-foreground mb-5 line-clamp-3 text-sm leading-relaxed">
                     {project.description}
                   </p>
+                  
+                  {/* Technologies with staggered animation */}
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {project.technologies.slice(0, 3).map((tech, index) => (
-                      <Badge
+                      <motion.div
                         key={index}
-                        variant="secondary"
-                        className="text-xs"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ 
+                          delay: idx * 0.05 + index * 0.1,
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20
+                        }}
+                        whileHover={{ 
+                          scale: 1.1,
+                          y: -2,
+                          transition: { duration: 0.2 }
+                        }}
                       >
-                        {tech.name}
-                      </Badge>
+                        <Badge
+                          variant="secondary"
+                          className="text-xs font-medium bg-primary/10 hover:bg-primary/20 border border-primary/20 hover:border-primary/40 transition-all duration-300 backdrop-blur-sm"
+                        >
+                          {tech.name}
+                        </Badge>
+                      </motion.div>
                     ))}
                     {project.technologies.length > 3 && (
-                      <Badge variant="outline" className="text-xs">
-                        +{project.technologies.length - 3}
-                      </Badge>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ 
+                          delay: idx * 0.05 + 0.3,
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20
+                        }}
+                        whileHover={{ 
+                          scale: 1.1,
+                          rotate: 5,
+                          transition: { duration: 0.2 }
+                        }}
+                      >
+                        <Badge 
+                          variant="outline" 
+                          className="text-xs font-medium border-primary/30 hover:border-primary/60 hover:bg-primary/5 transition-all duration-300"
+                        >
+                          +{project.technologies.length - 3}
+                        </Badge>
+                      </motion.div>
                     )}
                   </div>
+
+                  {/* View project indicator */}
+                  <motion.div 
+                    className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-purple-500 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1, duration: 0.8 }}
+                  />
                 </CardContent>
+
+                {/* Corner shine effect */}
+                <div className="absolute -bottom-12 -right-12 w-24 h-24 rounded-full bg-primary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
               </Card>
             </motion.div>
           ))}

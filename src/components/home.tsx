@@ -46,19 +46,9 @@ const AboutSection = () => {
       level: 90,
     },
     {
-      name: "Node.js",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-      level: 80,
-    },
-    {
-      name: "Express",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-      level: 75,
-    },
-    {
-      name: "PostgreSQL",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-      level: 70,
+      name: "GoHighLevel",
+      logo: "https://assets-global.website-files.com/5f3f77057c9d99a6f0c86218/5f3f77057c9d99b889c86252_ghl-logo.svg",
+      level: 85,
     },
   ]
 

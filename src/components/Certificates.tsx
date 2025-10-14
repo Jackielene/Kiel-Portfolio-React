@@ -103,18 +103,30 @@ const CertificatesSection = () => {
   ];
 
   return (
-    <section id="certificates" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section id="certificates" className="py-20 bg-muted/30 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse-subtle" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse-subtle" style={{ animationDelay: '1s' }} />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <SAOText variant="h2" className="mb-2">Certificates</SAOText>
-          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <SAOText variant="h2" className="mb-4">Certificates</SAOText>
+          <motion.div 
+            className="w-24 h-1 bg-gradient-to-r from-primary via-purple-500 to-primary mx-auto mb-6"
+            initial={{ width: 0 }}
+            whileInView={{ width: 96 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          />
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Professional certifications that validate my expertise and knowledge
             in various technologies.
           </p>
@@ -126,80 +138,176 @@ const CertificatesSection = () => {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.08,
+                type: "spring",
+                stiffness: 100,
+                damping: 15
+              }}
               viewport={{ once: true }}
               whileHover={{ 
-                y: -10,
-                transition: { duration: 0.2 }
+                y: -12,
+                transition: { duration: 0.3, ease: "easeOut" }
               }}
               onHoverStart={() => setHoveredIndex(index)}
               onHoverEnd={() => setHoveredIndex(null)}
-              className="bg-background rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-transparent hover:border-primary/20"
+              className="group perspective-1000 h-full"
             >
-              <div className="relative h-40 overflow-hidden bg-muted/50">
-                <motion.img
-                  src={certificate.logo}
-                  alt={`${certificate.organization} logo`}
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.4 }}
-                />
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0"
-                  animate={{ opacity: hoveredIndex === index ? 0.7 : 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <motion.div 
-                  className="absolute bottom-0 left-0 right-0 p-3 text-white transform translate-y-full"
-                  animate={{ 
-                    translateY: hoveredIndex === index ? 0 : '100%',
-                    opacity: hoveredIndex === index ? 1 : 0
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <p className="text-sm font-medium">{certificate.organization}</p>
-                </motion.div>
-              </div>
-              <div className="p-6">
-                <motion.h3 
-                  className="font-bold text-lg mb-1"
-                  animate={{ 
-                    color: hoveredIndex === index ? 'var(--primary)' : 'var(--foreground)'
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {certificate.name}
-                </motion.h3>
-                <p className="text-muted-foreground mb-2">
-                  {certificate.organization}
-                </p>
-                <div className="flex justify-between items-center mt-4">
-                  <span className="text-sm text-muted-foreground">
-                    {certificate.date}
-                  </span>
+              <div 
+                className="relative overflow-hidden h-full cursor-pointer transition-all duration-500
+                  bg-gradient-to-br from-card/90 via-card/70 to-card/90 backdrop-blur-xl
+                  rounded-2xl
+                  border-2 border-primary/10 hover:border-primary/30
+                  shadow-lg hover:shadow-2xl hover:shadow-primary/20
+                  before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/5 before:via-purple-500/5 before:to-primary/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 before:rounded-2xl"
+                style={{ transform: 'translateZ(0)' }}
+              >
+                {/* Gradient border glow effect */}
+                <div className="absolute -inset-[2px] bg-gradient-to-r from-primary/0 via-primary/50 to-purple-500/50 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500 -z-10 rounded-2xl" />
+                
+                {/* Certificate Image Section with modern overlays */}
+                <div className="relative h-48 overflow-hidden rounded-t-2xl">
+                  {/* Animated gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay" />
+                  
+                  {/* Shimmer effect on hover */}
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out z-20 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+                  
+                  <motion.img
+                    src={certificate.logo}
+                    alt={`${certificate.organization} logo`}
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  />
+                  
+                  {/* Verified badge */}
+                  <motion.div 
+                    className="absolute top-4 right-4 w-10 h-10 rounded-full bg-green-500/90 backdrop-blur-sm flex items-center justify-center shadow-lg border-2 border-white/30"
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      delay: index * 0.08 + 0.3,
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 12
+                    }}
+                  >
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </motion.div>
+
+                  {/* Dark gradient overlay from bottom */}
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
+                    animate={{ 
+                      opacity: hoveredIndex === index ? 1 : 0.3
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+
+                  {/* Organization label with slide up animation */}
+                  <motion.div 
+                    className="absolute bottom-0 left-0 right-0 p-4"
+                    animate={{ 
+                      y: hoveredIndex === index ? 0 : 10,
+                      opacity: hoveredIndex === index ? 1 : 0.8
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <p className="text-sm font-bold text-white drop-shadow-lg backdrop-blur-sm">
+                      {certificate.organization}
+                    </p>
+                  </motion.div>
+
+                  {/* Corner accent */}
+                  <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+
+                {/* Content Section */}
+                <div className="p-6 relative">
+                  {/* Floating particles effect */}
+                  <div className="absolute top-2 right-4 w-2 h-2 rounded-full bg-primary/50 blur-sm animate-pulse-subtle" />
+                  <div className="absolute bottom-6 left-6 w-1 h-1 rounded-full bg-purple-500/50 blur-sm animate-pulse" style={{ animationDelay: '0.5s' }} />
+                  
+                  <motion.h3 
+                    className="font-bold text-base mb-2 line-clamp-2 min-h-[3rem]"
+                    animate={{ 
+                      color: hoveredIndex === index ? 'hsl(var(--primary))' : 'hsl(var(--foreground))'
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {certificate.name}
+                  </motion.h3>
+                  
+                  {/* Date with icon */}
+                  <div className="flex items-center gap-2 mb-4 text-sm text-muted-foreground">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span>{certificate.date}</span>
+                  </div>
+                  
+                  {/* View Certificate Button */}
                   {certificate.credentialPDF && (
                     <motion.a
                       href={certificate.credentialPDF}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-primary hover:underline flex items-center gap-1 group"
-                      whileHover={{ x: 3 }}
+                      className="group/btn inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-300 relative"
+                      whileHover={{ x: 4 }}
                       transition={{ duration: 0.2 }}
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      View Certificate
+                      <span className="relative z-10">View Certificate</span>
                       <motion.span
-                        initial={{ opacity: 0, x: -5 }}
+                        className="relative z-10"
                         animate={{ 
-                          opacity: hoveredIndex === index ? 1 : 0,
-                          x: hoveredIndex === index ? 0 : -5
+                          x: hoveredIndex === index ? 3 : 0,
+                          opacity: hoveredIndex === index ? 1 : 0.7
                         }}
                         transition={{ duration: 0.2 }}
                       >
-                        <ExternalLink size={14} />
+                        <ExternalLink size={16} />
                       </motion.span>
+                      
+                      {/* Underline effect */}
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-500 group-hover/btn:w-full transition-all duration-300" />
                     </motion.a>
                   )}
+
+                  {/* Credential ID tooltip */}
+                  {certificate.credentialId && (
+                    <motion.div
+                      className="mt-3 p-2 rounded-lg bg-muted/50 backdrop-blur-sm border border-primary/10"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ 
+                        opacity: hoveredIndex === index ? 1 : 0,
+                        height: hoveredIndex === index ? 'auto' : 0
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p className="text-xs text-muted-foreground truncate">
+                        ID: {certificate.credentialId}
+                      </p>
+                    </motion.div>
+                  )}
                 </div>
+
+                {/* Bottom gradient bar */}
+                <motion.div 
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-purple-500 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 + 0.2, duration: 0.8 }}
+                />
+
+                {/* Corner shine effect */}
+                <div className="absolute -bottom-12 -right-12 w-32 h-32 rounded-full bg-primary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
               </div>
             </motion.div>
           ))}
