@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import HeroSection from "./HeroSection"
 import Navbar from "./Navbar"
 import ProjectsSection from "./ProjectSection"
+import ServicesSection from "./Services"
 import CertificatesSection from "./Certificates"
 import ThemeProvider, { useTheme } from "./ThemeProvider"
 import { Linkedin, Mail, Phone, Globe } from "lucide-react"
@@ -17,62 +18,33 @@ import TidioChat from "./TidioChat"
 const AboutSection = () => {
   const containerRef = useRef<HTMLDivElement>(null)
   const { theme } = useTheme();
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
-  const skills = [
-    { name: "HTML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", level: 90 },
-    { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg", level: 85 },
-    {
-      name: "Bootstrap",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-      level: 80,
-    },
-    {
-      name: "WordPress",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
-      level: 75,
-    },
-    { name: "Laravel", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg", level: 70 },
-    { name: "PHP", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg", level: 75 },
-    { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", level: 80 },
-    { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", level: 85 },
-    {
-      name: "TypeScript",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-      level: 80,
-    },
-    {
-      name: "Tailwind CSS",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
-      level: 90,
-    },
-    {
-      name: "GoHighLevel",
-      logo: "https://assets-global.website-files.com/5f3f77057c9d99a6f0c86218/5f3f77057c9d99b889c86252_ghl-logo.svg",
-      level: 85,
-    },
+  const stats = [
+    { number: "3+", label: "Years Experience", icon: "🎯" },
+    { number: "11+", label: "Projects Completed", icon: "🚀" },
+    { number: "100%", label: "Client Satisfaction", icon: "✨" },
   ]
 
   const softSkills = [
-    "Teamwork",
-    "Communication",
-    "Critical Thinking",
-    "Time Management",
-    "Problem Solving",
-    "Adaptability",
+    { name: "Teamwork", icon: "🤝", description: "Collaborating effectively with cross-functional teams" },
+    { name: "Communication", icon: "💬", description: "Clear and effective stakeholder communication" },
+    { name: "Critical Thinking", icon: "🧠", description: "Analyzing problems to find innovative solutions" },
+    { name: "Time Management", icon: "⏰", description: "Delivering projects on time with quality" },
+    { name: "Problem Solving", icon: "🔧", description: "Turning challenges into opportunities" },
+    { name: "Adaptability", icon: "🌱", description: "Thriving in fast-paced environments" },
   ]
 
-  const skillSets = [
-    "User Research",
-    "Web Design",
-    "App Design",
-    "Responsive Design",
-    "UI/UX Design",
-    "Brainstorming",
+  const interests = [
+    { name: "Design Trends", icon: "🎨", color: "from-purple-500 to-pink-500" },
+    { name: "Technology", icon: "💻", color: "from-blue-500 to-cyan-500" },
+    { name: "Web Development", icon: "🌐", color: "from-green-500 to-emerald-500" },
   ]
 
-  const interests = ["Design Trends", "Technology", "Web Development"]
-
-  const languages = ["English (Professional)", "Filipino (Native)"]
+  const languages = [
+    { name: "English", level: "Professional", flag: "🇬🇧" },
+    { name: "Filipino", level: "Native", flag: "🇵🇭" },
+  ]
 
   return (
     <section
@@ -89,100 +61,284 @@ const AboutSection = () => {
       </div>
 
       <div ref={containerRef} className="container mx-auto px-4 relative z-10">
-        {/* About Me Section - Matching the image layout */}
-        <div className="mb-20">
+        {/* Hero Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+            className="inline-block mb-6"
+          >
+            <div className="bg-gradient-to-r from-[#8a2be2] to-[#6a5acd]/30 px-8 py-4 rounded-full">
+              <SAOText variant="h2" className="text-white uppercase">About Me</SAOText>
+            </div>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 ${theme === "dark" ? "text-white" : "text-black"}`}
+          >
+            Turning Ideas Into
+            <span className="block mt-2 bg-gradient-to-r from-[#8a2be2] via-[#00bfff] to-[#8a2be2] bg-clip-text text-transparent">
+              Digital Experiences
+            </span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className={`text-lg md:text-xl max-w-3xl mx-auto ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}
+          >
+            I'm a Full Stack Web Developer passionate about crafting beautiful, functional web experiences. 
+            Based in the stunning Siargao Islands, I bring creativity and technical expertise to every project.
+          </motion.p>
+        </motion.div>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ y: -8, scale: 1.05 }}
+              className={`relative group rounded-[30px] p-8 ${
+                theme === "dark" 
+                  ? "bg-gradient-to-br from-[#1a1a2e]/80 to-[#0f0c29]/80 border border-[#6a5acd]/20 hover:border-[#8a2be2]/50" 
+                  : "bg-gradient-to-br from-white to-slate-50 border border-gray-200 hover:border-[#8a2be2]/50 shadow-lg hover:shadow-xl"
+              } transition-all duration-300 overflow-hidden`}
+            >
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#8a2be2]/0 to-[#00bfff]/0 group-hover:from-[#8a2be2]/10 group-hover:to-[#00bfff]/10 transition-all duration-500 rounded-[30px]" />
+              <div className="relative z-10 text-center">
+                <div className="text-4xl mb-3">{stat.icon}</div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.3, type: "spring", stiffness: 200 }}
+                  className={`text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-[#8a2be2] to-[#00bfff] bg-clip-text text-transparent`}
+                >
+                  {stat.number}
+                </motion.div>
+                <p className={`text-sm md:text-base font-medium ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
+                  {stat.label}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Main Content Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-20 items-start">
+          {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-[#8a2be2] to-[#6a5acd]/30 w-72 py-4 px-6 rounded-full mb-10"
+            className="space-y-6 lg:pr-8 lg:mr-4"
           >
-            <SAOText variant="h2" className="text-white uppercase">About me</SAOText>
+            <div>
+              <h3 className={`text-3xl md:text-4xl font-bold mb-6 ${theme === "dark" ? "text-white" : "text-black"}`}>
+                Who I Am
+              </h3>
+              <div className="space-y-4">
+                <p className={`text-lg leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
+                  Hello! I'm <span className="font-semibold text-[#8a2be2]">Jackielene Pomoy</span>, a skilled Full Stack Web Developer 
+                  who transforms creative visions into high-performing digital experiences.
+                </p>
+                <p className={`text-lg leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
+                  With a Bachelor's degree in Information Technology and hands-on experience through projects and freelancing, 
+                  I specialize in creating solutions that drive real business results.
+                </p>
+                <div className={`p-5 rounded-xl mt-6 ${
+                  theme === "dark" 
+                    ? "bg-gradient-to-r from-[#1a1a2e]/60 to-[#0f0c29]/60 border border-[#6a5acd]/30" 
+                    : "bg-gradient-to-r from-blue-50 to-purple-50 border border-purple-200"
+                }`}>
+                  <h4 className={`font-bold text-lg mb-3 ${theme === "dark" ? "text-white" : "text-black"}`}>
+                    My Top Skills:
+                  </h4>
+                  <ul className="space-y-2">
+                    {[
+                      "Building responsive websites that work flawlessly on all devices",
+                      "Designing high-converting GoHighLevel funnels that drive sales",
+                      "Setting up CRM automations that streamline business processes",
+                      "Creating effective email and SMS campaigns that engage audiences",
+                      "Building appointment workflows that reduce no-shows and increase bookings"
+                    ].map((skill, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        className={`flex items-start gap-3 ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
+                      >
+                        <span className="text-[#8a2be2] font-bold mt-1">•</span>
+                        <span>{skill}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+                <p className={`text-lg leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
+                  My passion lies in combining technical expertise with marketing strategy to deliver solutions that not only look great 
+                  but also generate measurable results for businesses.
+                </p>
+              </div>
+            </div>
+
+            {/* Contact Cards */}
+            <div className="mt-8">
+              <h4 className={`text-xl font-semibold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>
+                Let's Connect
+              </h4>
+              <div className="space-y-3">
+                {[
+                  { icon: Mail, text: "pomoy.jackielene.s@gmail.com", href: "mailto:pomoy.jackielene.s@gmail.com", color: "from-blue-500 to-cyan-500" },
+                  { icon: Phone, text: "+(639) 953120464", href: "tel:+639953120464", color: "from-green-500 to-emerald-500" },
+                  { icon: Linkedin, text: "LinkedIn Profile", href: "https://www.linkedin.com/in/jackielene-pomoy/", color: "from-blue-600 to-blue-700" },
+                ].map((contact, index) => (
+                  <motion.a
+                    key={index}
+                    href={contact.href}
+                    target={contact.href.startsWith("http") ? "_blank" : undefined}
+                    rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ x: 8, scale: 1.02 }}
+                    className={`flex items-center gap-4 p-4 rounded-xl group transition-all duration-300 ${
+                      theme === "dark"
+                        ? "bg-[#1a1a2e]/40 hover:bg-[#1a1a2e] border border-[#6a5acd]/20 hover:border-[#8a2be2]/50"
+                        : "bg-white/80 hover:bg-white border border-gray-200 hover:border-[#8a2be2]/50 shadow-sm hover:shadow-md"
+                    }`}
+                  >
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${contact.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                      <contact.icon size={20} className="text-white" />
+                    </div>
+                    <span className={`flex-1 ${theme === "dark" ? "text-gray-300 group-hover:text-white" : "text-gray-700 group-hover:text-black"} transition-colors`}>
+                      {contact.text}
+                    </span>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
-          <div className="flex flex-col md:flex-row gap-10 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="md:w-1/2"
-            >
-              <SAOText variant="h3" className={`mb-4 px-4 sm:px-6 md:px-8 ${theme === "dark" ? "text-white" : "text-black"}`}>Hi!</SAOText>
-              <SAOText variant="p" className={`${theme === "dark" ? "text-white" : "text-black"} mb-4 px-4 sm:px-6 md:px-8 text-justify text-sm sm:text-base`}>
-                My name is Jackielene Pomoy. I am a Frontend Developer based in Siargao Islands with experience through projects
-                and freelancing.
-              </SAOText>
-              <SAOText variant="p" className={`${theme === "dark" ? "text-white" : "text-black"} mb-6 px-4 sm:px-6 md:px-8 text-justify text-sm sm:text-base`}>
-                My objective: Challenge myself in a new environment to learn, develop, improve my skills through
-                different projects and contribute more to the company with my abilities.
-              </SAOText>
-
-              <div className="mt-10 px-4 sm:px-6 md:px-8">
-                <h3 className={`text-2xl font-bold mb-4 sm:mb-6 ${theme === "dark" ? "text-white" : "text-black"}`}>Contact</h3>
-                <div className="space-y-3 sm:space-y-4">
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#6a5acd] rounded-full flex items-center justify-center">
-                      <Mail size={14} className="text-white" />
-                    </div>
-                    <span className={`${theme === "dark" ? "text-white" : "text-black"} whitespace-nowrap overflow-hidden text-ellipsis text-sm sm:text-base`}>pomoy.jackielene.s@gmail.com</span>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#6a5acd] rounded-full flex items-center justify-center">
-                      <Phone size={16} className="text-white" />
-                    </div>
-                    <span className={`${theme === "dark" ? "text-white" : "text-black"} whitespace-nowrap text-sm sm:text-base`}>+(639) 953120464</span>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#6a5acd] rounded-full flex items-center justify-center">
-                      <Linkedin size={16} className="text-white" />
-                    </div>
-                    <span className={`${theme === "dark" ? "text-white" : "text-black"} whitespace-nowrap overflow-hidden text-ellipsis`}>https://www.linkedin.com/in/jackielene-pomoy/</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="md:w-1/2 flex justify-center"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#8a2be2] to-[#00bfff] rounded-[40px] blur-md transform rotate-3"></div>
-                <div className="relative w-64 h-80 md:w-80 md:h-96 rounded-[40px] overflow-hidden border-4 border-[#6a5acd]/30">
+          {/* Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="relative flex justify-center lg:justify-start lg:pl-8 lg:ml-4"
+          >
+            <div className="relative group">
+              {/* Animated gradient border */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#8a2be2] via-[#00bfff] to-[#8a2be2] rounded-[50px] opacity-20 group-hover:opacity-40 blur-xl transition-opacity duration-500 animate-pulse" />
+              
+              {/* Main image container */}
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                transition={{ type: "spring", stiffness: 200 }}
+                className="relative rounded-[40px] overflow-hidden border-4 border-transparent bg-gradient-to-br from-[#8a2be2] to-[#00bfff] p-1"
+              >
+                <div className={`rounded-[36px] overflow-hidden ${theme === "dark" ? "bg-[#1a1a2e]" : "bg-white"}`}>
                   <img
                     src={profileImage}
-                    alt="Profile"
-                    className="w-full h-full object-cover"
+                    alt="Jackielene Pomoy"
+                    className="w-full h-auto object-cover"
                   />
                 </div>
-              </div>
-            </motion.div>
-          </div>
+              </motion.div>
+
+              {/* Floating badges */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 }}
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className={`absolute -top-4 -left-4 px-4 py-2 rounded-full shadow-lg ${
+                  theme === "dark" ? "bg-[#1a1a2e] border border-[#6a5acd]" : "bg-white border border-gray-200"
+                }`}
+              >
+                <span className={`text-sm font-semibold ${theme === "dark" ? "text-white" : "text-black"}`}>
+                  🎯 Available for Work
+                </span>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
 
         {/* Education and Skills Section */}
-        <div className={`${theme === "dark" ? "bg-[#1a1a2e]/80" : "bg-white/80"} rounded-[40px] p-10 mb-20 shadow-md`}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className={`${theme === "dark" ? "bg-gradient-to-br from-[#1a1a2e]/80 to-[#0f0c29]/80" : "bg-gradient-to-br from-white to-slate-50"} rounded-[40px] p-8 md:p-12 mb-20 border ${
+          theme === "dark" ? "border-[#6a5acd]/20" : "border-gray-200"
+        } shadow-xl`}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Education */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="bg-gradient-to-r from-[#8a2be2] to-[#6a5acd]/30 w-48 py-2 px-6 rounded-full mb-6">
-                <h3 className="text-xl font-bold text-white">Education</h3>
-              </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="inline-block bg-gradient-to-r from-[#8a2be2] to-[#6a5acd] px-6 py-3 rounded-full mb-8 shadow-lg"
+              >
+                <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                  <span>🎓</span> Education
+                </h3>
+              </motion.div>
 
-              <div className="mb-4">
-                <div className="inline-block bg-[#6a5acd]/30 rounded-full px-4 py-1 text-sm mb-3 text-white">2021 - 2025</div>
-                <h4 className={`text-lg font-medium ${theme === "dark" ? "text-white" : "text-black"}`}>Surigao del Norte State University</h4>
-                <p className={`${theme === "dark" ? "text-white" : "text-black"}`}>Bachelor of Science in Information Technology</p>
+              <div className={`relative p-6 rounded-[30px] ${
+                theme === "dark" ? "bg-[#1a1a2e]/40" : "bg-white/80"
+              } border ${theme === "dark" ? "border-[#6a5acd]/20" : "border-gray-200"} hover:border-[#8a2be2]/50 transition-all duration-300`}>
+                <motion.div
+                  initial={{ scale: 0.8 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2, type: "spring" }}
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full px-4 py-2 text-sm font-semibold mb-4 text-white shadow-md"
+                >
+                  <span>✅</span>
+                  <span>Graduated 2025</span>
+                </motion.div>
+                <h4 className={`text-xl font-bold mb-2 ${theme === "dark" ? "text-white" : "text-black"}`}>
+                  Surigao del Norte State University
+                </h4>
+                <p className={`text-lg ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
+                  Bachelor of Science in Information Technology
+                </p>
+                <div className="mt-4 pt-4 border-t border-gray-700/30">
+                  <p className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}>
+                    Successfully completed degree with expertise in web development, software engineering, and modern technologies. 
+                    Gained practical experience through hands-on projects and real-world applications.
+                  </p>
+                </div>
               </div>
             </motion.div>
 
@@ -190,154 +346,164 @@ const AboutSection = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="bg-gradient-to-r from-[#8a2be2] to-[#6a5acd]/30 w-48 py-2 px-6 rounded-full mb-6">
-                <h3 className="text-xl font-bold text-white">Soft skills</h3>
-              </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="inline-block bg-gradient-to-r from-[#00bfff] to-[#8a2be2] px-6 py-3 rounded-full mb-8 shadow-lg"
+              >
+                <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                  <span>💡</span> Soft Skills
+                </h3>
+              </motion.div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {softSkills.map((skill, index) => (
-                  <div key={index} className={`flex items-center ${
-                    theme === "dark" 
-                      ? "bg-[#1a1a2e]/40 hover:bg-gradient-to-r hover:from-[#00bfff] hover:to-[#1a1a2e]/40 shadow-[0_4px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_16px_rgba(0,191,255,0.3)]" 
-                      : "bg-slate-100/80 hover:bg-slate-200 shadow-[0_4px_8px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
-                  } rounded-lg p-3 transition-all duration-300 hover:-translate-y-1`}>
-                    <div className="w-3 h-3 bg-[#00bfff] rounded-full mr-3 flex-shrink-0"></div>
-                    <span className={`${theme === "dark" ? "text-white" : "text-black"} break-words`}>{skill}</span>
-                  </div>
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    onHoverStart={() => setHoveredCard(index)}
+                    onHoverEnd={() => setHoveredCard(null)}
+                    whileHover={{ y: -8, scale: 1.05 }}
+                    className={`relative group rounded-xl p-4 transition-all duration-300 cursor-pointer ${
+                      theme === "dark" 
+                        ? "bg-[#1a1a2e]/40 hover:bg-[#1a1a2e] border border-[#6a5acd]/20 hover:border-[#00bfff]/50" 
+                        : "bg-white/80 hover:bg-white border border-gray-200 hover:border-[#8a2be2]/50 shadow-sm hover:shadow-lg"
+                    }`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="text-2xl group-hover:scale-110 transition-transform duration-300">{skill.icon}</div>
+                      <div className="flex-1">
+                        <h4 className={`font-semibold mb-1 ${theme === "dark" ? "text-white" : "text-black"}`}>
+                          {skill.name}
+                        </h4>
+                        <p className={`text-xs ${theme === "dark" ? "text-gray-400" : "text-gray-600"} group-hover:text-[#8a2be2] transition-colors`}>
+                          {skill.description}
+                        </p>
+                      </div>
+                    </div>
+                    {hoveredCard === index && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="absolute inset-0 bg-gradient-to-br from-[#8a2be2]/10 to-[#00bfff]/10 rounded-xl -z-10"
+                      />
+                    )}
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
           </div>
         </div>
 
-        {/* Technical Skills and Skill Sets */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
-          {/* Technical Skills */}
+        {/* Interests and Languages */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+          {/* Interests */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className={`${theme === "dark" ? "bg-[#1a1a2e]/80" : "bg-white/80"} rounded-[40px] p-10 shadow-md`}
+            className={`${theme === "dark" ? "bg-gradient-to-br from-[#1a1a2e]/80 to-[#0f0c29]/80" : "bg-gradient-to-br from-white to-slate-50"} rounded-[40px] p-8 border ${
+              theme === "dark" ? "border-[#6a5acd]/20" : "border-gray-200"
+            } shadow-xl`}
           >
-            <div className="bg-gradient-to-r from-[#8a2be2] to-[#6a5acd]/30 w-48 py-2 px-6 rounded-full mb-6">
-              <h3 className="text-xl font-bold text-white">Technical skills</h3>
-            </div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="inline-block bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3 rounded-full mb-8 shadow-lg"
+            >
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <span>🌟</span> Interests
+              </h3>
+            </motion.div>
 
-            <div className="grid grid-cols-3 gap-4">
-              {skills.map((skill, index) => (
+            <div className="space-y-4">
+              {interests.map((interest, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.1, delay: index * 0.05 }}
-                  whileHover={{ scale: 1.1 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className={
-                    (
-                      theme === "dark"
-                        ? "bg-[#1a1a2e] hover:bg-[#1a1a2e]/80 shadow-[0_4px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_16px_rgba(0,191,255,0.3)]"
-                        : "bg-slate-100 hover:bg-slate-200 shadow-[0_4px_8px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
-                    ) +
-                    " rounded-xl p-3 flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-1"
-                  }
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ x: 8, scale: 1.02 }}
+                  className={`group relative overflow-hidden rounded-xl p-4 transition-all duration-300 ${
+                    theme === "dark"
+                      ? "bg-[#1a1a2e]/40 hover:bg-[#1a1a2e] border border-[#6a5acd]/20 hover:border-pink-500/50"
+                      : "bg-white/80 hover:bg-white border border-gray-200 hover:border-pink-500/50 shadow-sm hover:shadow-md"
+                  }`}
                 >
-                  <div className="w-12 h-12 mb-2">
-                    <img
-                      src={skill.logo || "/placeholder.svg"}
-                      alt={skill.name}
-                      className="w-full h-full object-contain"
-                    />
+                  <div className={`absolute inset-0 bg-gradient-to-r ${interest.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+                  <div className="relative flex items-center gap-4">
+                    <div className="text-3xl group-hover:scale-110 transition-transform duration-300">{interest.icon}</div>
+                    <span className={`text-lg font-semibold ${theme === "dark" ? "text-white" : "text-black"}`}>
+                      {interest.name}
+                    </span>
                   </div>
-                  <span className={`text-xs ${theme === "dark" ? "text-white" : "text-black"}`}>{skill.name}</span>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Skill Sets */}
+          {/* Languages */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className={`${theme === "dark" ? "bg-[#1a1a2e]/80" : "bg-white/80"} rounded-[40px] p-10 shadow-md`}
+            className={`${theme === "dark" ? "bg-gradient-to-br from-[#1a1a2e]/80 to-[#0f0c29]/80" : "bg-gradient-to-br from-white to-slate-50"} rounded-[40px] p-8 border ${
+              theme === "dark" ? "border-[#6a5acd]/20" : "border-gray-200"
+            } shadow-xl`}
           >
-            <div className="bg-gradient-to-r from-[#8a2be2] to-[#6a5acd]/30 w-48 py-2 px-6 rounded-full mb-6">
-              <h3 className="text-xl font-bold text-white">Skill set</h3>
-            </div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 px-6 py-3 rounded-full mb-8 shadow-lg"
+            >
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <span>🗣️</span> Languages
+              </h3>
+            </motion.div>
 
-            <div className="grid grid-cols-1 gap-4">
-              {skillSets.map((skill, index) => (
-                <div key={index} className={`flex items-center ${
-                  theme === "dark" 
-                    ? "bg-[#1a1a2e]/40 hover:bg-gradient-to-r hover:from-[#00bfff] hover:to-[#1a1a2e]/40 shadow-[0_4px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_16px_rgba(0,191,255,0.3)]" 
-                    : "bg-slate-100/80 hover:bg-slate-200 shadow-[0_4px_8px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
-                } rounded-lg p-3 transition-all duration-300 hover:-translate-y-1`}>
-                  <div className="w-3 h-3 bg-[#00bfff] rounded-full mr-3"></div>
-                  <span className={`${theme === "dark" ? "text-white" : "text-black"}`}>{skill}</span>
-                </div>
+            <div className="space-y-4">
+              {languages.map((language, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ x: 8, scale: 1.02 }}
+                  className={`group rounded-xl p-5 transition-all duration-300 ${
+                    theme === "dark"
+                      ? "bg-[#1a1a2e]/40 hover:bg-[#1a1a2e] border border-[#6a5acd]/20 hover:border-blue-500/50"
+                      : "bg-white/80 hover:bg-white border border-gray-200 hover:border-blue-500/50 shadow-sm hover:shadow-md"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="text-3xl group-hover:scale-110 transition-transform duration-300">{language.flag}</span>
+                      <div>
+                        <h4 className={`font-bold text-lg ${theme === "dark" ? "text-white" : "text-black"}`}>
+                          {language.name}
+                        </h4>
+                        <p className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+                          {language.level}
+                        </p>
+                      </div>
+                    </div>
+                    <div className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                      theme === "dark" ? "bg-[#6a5acd]/30 text-[#00bfff]" : "bg-blue-100 text-blue-700"
+                    }`}>
+                      {language.level}
+                    </div>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
-        </div>
-
-        {/* Interests and Languages */}
-        <div className={`${theme === "dark" ? "bg-[#1a1a2e]/80" : "bg-white/80"} rounded-[40px] p-10 shadow-md`}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* Interests */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <div className="bg-gradient-to-r from-[#8a2be2] to-[#6a5acd]/30 w-48 py-2 px-6 rounded-full mb-6">
-                <h3 className="text-xl font-bold text-white">Interest</h3>
-              </div>
-
-              <div className="grid grid-cols-1 gap-4">
-                {interests.map((interest, index) => (
-                  <div key={index} className={`flex items-center ${
-                    theme === "dark" 
-                      ? "bg-[#1a1a2e]/40 hover:bg-gradient-to-r hover:from-[#00bfff] hover:to-[#1a1a2e]/40 shadow-[0_4px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_16px_rgba(0,191,255,0.3)]" 
-                      : "bg-slate-100/80 hover:bg-slate-200 shadow-[0_4px_8px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
-                  } rounded-lg p-3 transition-all duration-300 hover:-translate-y-1`}>
-                    <div className="w-3 h-3 bg-[#00bfff] rounded-full mr-3"></div>
-                    <span className={`${theme === "dark" ? "text-white" : "text-black"}`}>{interest}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Languages */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className="bg-gradient-to-r from-[#8a2be2] to-[#6a5acd]/30 w-48 py-2 px-6 rounded-full mb-6">
-                <h3 className="text-xl font-bold text-white">Language</h3>
-              </div>
-
-              <div className="grid grid-cols-1 gap-4">
-                {languages.map((language, index) => (
-                  <div key={index} className={`flex items-center ${
-                    theme === "dark" 
-                      ? "bg-[#1a1a2e]/40 hover:bg-gradient-to-r hover:from-[#00bfff] hover:to-[#1a1a2e]/40 shadow-[0_4px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_16px_rgba(0,191,255,0.3)]" 
-                      : "bg-slate-100/80 hover:bg-slate-200 shadow-[0_4px_8px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
-                  } rounded-lg p-3 transition-all duration-300 hover:-translate-y-1`}>
-                    <div className="w-3 h-3 bg-[#00bfff] rounded-full mr-3"></div>
-                    <span className={`${theme === "dark" ? "text-white" : "text-black"}`}>{language}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
         </div>
       </div>
     </section>
@@ -725,6 +891,7 @@ const Footer = () => {
             {[
               { name: "Home", id: "home" },
               { name: "Projects", id: "projects" },
+              { name: "Services", id: "services" },
               { name: "About", id: "about" },
               { name: "Contact", id: "contact" }
             ].map((link) => (
@@ -1011,6 +1178,7 @@ const Home = () => {
               <Navbar />
               <HeroSection />
               <ProjectsSection />
+              <ServicesSection />
               <CertificatesSection />
               <AboutSection />
               <ContactSection />

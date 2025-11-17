@@ -12,7 +12,7 @@ interface NavbarProps {
 }
 
 const Navbar = ({
-  sections = ["Home", "Projects", "About", "Contact"],
+  sections = ["Home", "Projects", "Services", "About", "Contact"],
   activeSection = "Home",
   onSectionClick = () => {},
 }: NavbarProps) => {
@@ -39,6 +39,12 @@ const Navbar = ({
       const projectsSection = document.getElementById("projects");
       if (projectsSection) {
         projectsSection.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (section === "Services") {
+      // Scroll to Services section
+      const servicesSection = document.getElementById("services");
+      if (servicesSection) {
+        servicesSection.scrollIntoView({ behavior: "smooth" });
       }
     } else if (section === "About") {
       // Scroll to About section
