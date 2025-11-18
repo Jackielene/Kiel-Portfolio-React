@@ -10,19 +10,83 @@ import { SAOText } from "./SAOText"
 
 
 
-const HeroSection = () => {
-  // Animation for text reveal effect
-  const nameText = "Jackielene Pomoy"
-  const [letterClass, setLetterClass] = useState("text-animate-hover")
-  const profileRef = useRef<HTMLDivElement>(null)
+// Typewriter Effect Component
+const Typewriter = ({ 
+  text, 
+  typingSpeed = 100, 
+  pauseDuration = 2000,
+  showCursor = true,
+  cursorBlinkSpeed = 530
+}: { 
+  text: string; 
+  typingSpeed?: number; 
+  pauseDuration?: number;
+  showCursor?: boolean;
+  cursorBlinkSpeed?: number;
+}) => {
+  const [displayedText, setDisplayedText] = useState("")
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setLetterClass("text-animate")
-    }, 1000)
+    let currentIndex = 0
+    let timeoutId: NodeJS.Timeout
 
-    return () => clearTimeout(timeoutId)
-  }, [])
+    const typeText = () => {
+      if (currentIndex < text.length) {
+        setDisplayedText(text.slice(0, currentIndex + 1))
+        currentIndex++
+        timeoutId = setTimeout(typeText, typingSpeed)
+      }
+    }
+
+    // Start typing after a brief delay
+    timeoutId = setTimeout(typeText, 300)
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId)
+      }
+    }
+  }, [text, typingSpeed])
+
+  return (
+    <span 
+      className="inline-block relative"
+      style={{
+        background: 'linear-gradient(to right, #00bfff, #6a5acd, #8a2be2)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+      }}
+    >
+      {displayedText}
+      {showCursor && (
+        <motion.span
+          className="inline-block w-0.5 md:w-1 h-[1em] ml-1.5 md:ml-2 align-middle"
+          style={{
+            background: 'linear-gradient(to bottom, #00bfff, #8a2be2)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
+          animate={{
+            opacity: [1, 0, 1],
+          }}
+          transition={{
+            duration: cursorBlinkSpeed / 1000,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          |
+        </motion.span>
+      )}
+    </span>
+  )
+}
+
+const HeroSection = () => {
+  const nameText = "Jackielene Pomoy"
+  const profileRef = useRef<HTMLDivElement>(null)
 
   // Mouse follow effect for profile image
   useEffect(() => {
@@ -69,9 +133,6 @@ const HeroSection = () => {
     }
   }, [])
 
-  // Create array of individual letters for animating the name
-  const nameArray = Array.from(nameText)
-
   return (
     <section id="home" className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-0">
       {/* Interactive background */}
@@ -96,47 +157,31 @@ const HeroSection = () => {
               </SAOText>
             </motion.div>
 
-            {/* Name */}
+            {/* Name with Typewriter Effect */}
             <motion.div
               className="w-full"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <SAOText variant="h1" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight whitespace-nowrap">
-                {nameArray.map((letter, index) => (
-                  <motion.span
-                    key={index}
-                    className={`${letterClass} inline-block`}
-                    initial={{
-                      opacity: 0,
-                      y: 20,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      duration: 0.3,
-                      delay: 0.5 + index * 0.05,
-                      ease: "easeOut",
-                    }}
-                    whileHover={{
-                      scale: 1.1,
-                      transition: { duration: 0.2 },
-                    }}
-                  >
-                    {letter === " " ? "\u00A0" : letter}
-                  </motion.span>
-                ))}
-              </SAOText>
+              <div className="relative">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight min-h-[1.2em] font-mono tracking-wider">
+                  <Typewriter 
+                    text={nameText} 
+                    typingSpeed={120}
+                    pauseDuration={2000}
+                    showCursor={true}
+                    cursorBlinkSpeed={530}
+                  />
+                </h1>
+              </div>
 
               {/* Animated underline */}
               <motion.div
                 className="mt-4 h-1 w-0 rounded-full bg-gradient-to-r from-primary via-purple-500 to-primary lg:ml-0"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
-                transition={{ delay: 2, duration: 1, ease: "easeInOut" }}
+                transition={{ delay: 2.5, duration: 1, ease: "easeInOut" }}
               />
             </motion.div>
 

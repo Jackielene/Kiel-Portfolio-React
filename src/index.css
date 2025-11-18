@@ -312,3 +312,13 @@
 .animate-glow {
   animation: glow 2s ease-in-out infinite;
 }
+
+/* Typewriter Cursor Blink Animation */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}

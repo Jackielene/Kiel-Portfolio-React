@@ -62,11 +62,11 @@ const AboutSection = () => {
 
       <div ref={containerRef} className="container mx-auto px-4 relative z-10">
         {/* Hero Header Section */}
-        <motion.div
+          <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+            viewport={{ once: true }}
           className="text-center mb-16"
         >
           <motion.div
@@ -102,10 +102,10 @@ const AboutSection = () => {
             I'm a Full Stack Web Developer passionate about crafting beautiful, functional web experiences. 
             Based in the stunning Siargao Islands, I bring creativity and technical expertise to every project.
           </motion.p>
-        </motion.div>
+          </motion.div>
 
         {/* Stats Section */}
-        <motion.div
+            <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -199,13 +199,13 @@ const AboutSection = () => {
                       </motion.li>
                     ))}
                   </ul>
-                </div>
+                    </div>
                 <p className={`text-lg leading-relaxed ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
                   My passion lies in combining technical expertise with marketing strategy to deliver solutions that not only look great 
                   but also generate measurable results for businesses.
                 </p>
-              </div>
-            </div>
+                  </div>
+                    </div>
 
             {/* Contact Cards */}
             <div className="mt-8">
@@ -236,22 +236,22 @@ const AboutSection = () => {
                   >
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${contact.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                       <contact.icon size={20} className="text-white" />
-                    </div>
+                  </div>
                     <span className={`flex-1 ${theme === "dark" ? "text-gray-300 group-hover:text-white" : "text-gray-700 group-hover:text-black"} transition-colors`}>
                       {contact.text}
                     </span>
                   </motion.a>
                 ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
           {/* Profile Image */}
-          <motion.div
+            <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
+              viewport={{ once: true }}
             className="relative flex justify-center lg:justify-start lg:pl-8 lg:ml-4"
           >
             <div className="relative group">
@@ -289,8 +289,8 @@ const AboutSection = () => {
                   🎯 Available for Work
                 </span>
               </motion.div>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
         </div>
 
         {/* Education and Skills Section */}
@@ -312,21 +312,21 @@ const AboutSection = () => {
                 <h3 className="text-xl font-bold text-white flex items-center gap-2">
                   <span>🎓</span> Education
                 </h3>
-              </motion.div>
+            </motion.div>
 
               <div className={`relative p-6 rounded-[30px] ${
                 theme === "dark" ? "bg-[#1a1a2e]/40" : "bg-white/80"
               } border ${theme === "dark" ? "border-[#6a5acd]/20" : "border-gray-200"} hover:border-[#8a2be2]/50 transition-all duration-300`}>
-                <motion.div
+            <motion.div
                   initial={{ scale: 0.8 }}
                   whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
+              viewport={{ once: true }}
                   transition={{ delay: 0.2, type: "spring" }}
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full px-4 py-2 text-sm font-semibold mb-4 text-white shadow-md"
                 >
                   <span>✅</span>
                   <span>Graduated 2025</span>
-                </motion.div>
+            </motion.div>
                 <h4 className={`text-xl font-bold mb-2 ${theme === "dark" ? "text-white" : "text-black"}`}>
                   Surigao del Norte State University
                 </h4>
@@ -338,16 +338,16 @@ const AboutSection = () => {
                     Successfully completed degree with expertise in web development, software engineering, and modern technologies. 
                     Gained practical experience through hands-on projects and real-world applications.
                   </p>
-                </div>
-              </div>
+          </div>
+        </div>
             </motion.div>
 
             {/* Soft Skills */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
+            viewport={{ once: true }}
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -360,17 +360,17 @@ const AboutSection = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {softSkills.map((skill, index) => (
-                  <motion.div
-                    key={index}
+                <motion.div
+                  key={index}
                     initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                     onHoverStart={() => setHoveredCard(index)}
                     onHoverEnd={() => setHoveredCard(null)}
                     whileHover={{ y: -8, scale: 1.05 }}
                     className={`relative group rounded-xl p-4 transition-all duration-300 cursor-pointer ${
-                      theme === "dark" 
+                      theme === "dark"
                         ? "bg-[#1a1a2e]/40 hover:bg-[#1a1a2e] border border-[#6a5acd]/20 hover:border-[#00bfff]/50" 
                         : "bg-white/80 hover:bg-white border border-gray-200 hover:border-[#8a2be2]/50 shadow-sm hover:shadow-lg"
                     }`}
@@ -384,30 +384,30 @@ const AboutSection = () => {
                         <p className={`text-xs ${theme === "dark" ? "text-gray-400" : "text-gray-600"} group-hover:text-[#8a2be2] transition-colors`}>
                           {skill.description}
                         </p>
-                      </div>
-                    </div>
+                  </div>
+            </div>
                     {hoveredCard === index && (
-                      <motion.div
+          <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         className="absolute inset-0 bg-gradient-to-br from-[#8a2be2]/10 to-[#00bfff]/10 rounded-xl -z-10"
                       />
                     )}
                   </motion.div>
-                ))}
-              </div>
-            </motion.div>
+              ))}
+            </div>
+          </motion.div>
           </div>
         </div>
 
         {/* Interests and Languages */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-          {/* Interests */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {/* Interests */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+              viewport={{ once: true }}
             className={`${theme === "dark" ? "bg-gradient-to-br from-[#1a1a2e]/80 to-[#0f0c29]/80" : "bg-gradient-to-br from-white to-slate-50"} rounded-[40px] p-8 border ${
               theme === "dark" ? "border-[#6a5acd]/20" : "border-gray-200"
             } shadow-xl`}
@@ -422,7 +422,7 @@ const AboutSection = () => {
             </motion.div>
 
             <div className="space-y-4">
-              {interests.map((interest, index) => (
+                {interests.map((interest, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
@@ -431,7 +431,7 @@ const AboutSection = () => {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ x: 8, scale: 1.02 }}
                   className={`group relative overflow-hidden rounded-xl p-4 transition-all duration-300 ${
-                    theme === "dark"
+                    theme === "dark" 
                       ? "bg-[#1a1a2e]/40 hover:bg-[#1a1a2e] border border-[#6a5acd]/20 hover:border-pink-500/50"
                       : "bg-white/80 hover:bg-white border border-gray-200 hover:border-pink-500/50 shadow-sm hover:shadow-md"
                   }`}
@@ -444,16 +444,16 @@ const AboutSection = () => {
                     </span>
                   </div>
                 </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
-          {/* Languages */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {/* Languages */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+              viewport={{ once: true }}
             className={`${theme === "dark" ? "bg-gradient-to-br from-[#1a1a2e]/80 to-[#0f0c29]/80" : "bg-gradient-to-br from-white to-slate-50"} rounded-[40px] p-8 border ${
               theme === "dark" ? "border-[#6a5acd]/20" : "border-gray-200"
             } shadow-xl`}
@@ -468,7 +468,7 @@ const AboutSection = () => {
             </motion.div>
 
             <div className="space-y-4">
-              {languages.map((language, index) => (
+                {languages.map((language, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
@@ -477,7 +477,7 @@ const AboutSection = () => {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ x: 8, scale: 1.02 }}
                   className={`group rounded-xl p-5 transition-all duration-300 ${
-                    theme === "dark"
+                    theme === "dark" 
                       ? "bg-[#1a1a2e]/40 hover:bg-[#1a1a2e] border border-[#6a5acd]/20 hover:border-blue-500/50"
                       : "bg-white/80 hover:bg-white border border-gray-200 hover:border-blue-500/50 shadow-sm hover:shadow-md"
                   }`}
@@ -492,7 +492,7 @@ const AboutSection = () => {
                         <p className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
                           {language.level}
                         </p>
-                      </div>
+                  </div>
                     </div>
                     <div className={`px-3 py-1 rounded-full text-xs font-semibold ${
                       theme === "dark" ? "bg-[#6a5acd]/30 text-[#00bfff]" : "bg-blue-100 text-blue-700"
@@ -501,9 +501,9 @@ const AboutSection = () => {
                     </div>
                   </div>
                 </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                ))}
+              </div>
+            </motion.div>
         </div>
       </div>
     </section>
@@ -1018,25 +1018,7 @@ const Footer = () => {
 };
 
 const LoadingSpinner = () => {
-  const [audio] = useState(new Audio('/sounds/loading-sound.mp3'));
-
-  useEffect(() => {
-    const playAudio = async () => {
-      try {
-        audio.volume = 0.5;
-        await audio.play();
-      } catch (error) {
-        console.error('Error playing audio:', error);
-      }
-    };
-    
-    playAudio();
-    
-    return () => {
-      audio.pause();
-      audio.currentTime = 0;
-    };
-  }, [audio]);
+  // Audio removed to prevent autoplay errors - browsers require user interaction for audio playback
 
   return (
     <motion.div

@@ -6,7 +6,6 @@ import {
   Palette, 
   Smartphone, 
   Globe, 
-  ShoppingCart, 
   Zap,
   Search,
   Settings,
@@ -75,17 +74,6 @@ const ServicesSection = () => {
       ]
     },
     {
-      icon: <ShoppingCart className="w-8 h-8" />,
-      title: "E-Commerce Solutions",
-      description: "Build robust online stores with secure payment gateways, inventory management, and seamless shopping experiences.",
-      features: [
-        "Shopping cart functionality",
-        "Payment integration",
-        "Product management",
-        "Order processing"
-      ]
-    },
-    {
       icon: <Settings className="w-8 h-8" />,
       title: "Automation & Integration",
       description: "Streamline your workflows with custom automation solutions using GoHighLevel, Zapier, and other integration platforms.",
@@ -136,6 +124,7 @@ const ServicesSection = () => {
     
     // Database
     { name: "MySQL", category: "Database", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+    { name: "Firebase", category: "Database", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
     
     // Platforms & Tools (combined for marquee)
     { name: "WordPress", category: "Platforms", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" },
@@ -356,17 +345,16 @@ const ServicesSection = () => {
             </p>
           </div>
 
-          {/* Grouped Technologies */}
-          <div className="space-y-10">
-            {Object.entries(groupedTechnologies)
-              .filter(([category]) => category !== "Platforms" && category !== "Tools")
-              .map(([category, techs], categoryIndex) => (
+          {/* Frontend & Backend Combined Section */}
+          {(groupedTechnologies["Frontend"] || groupedTechnologies["Backend"]) && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10">
+              {/* Frontend Box */}
+              {groupedTechnologies["Frontend"] && (
                 <motion.div
-                  key={category}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: categoryIndex * 0.1 }}
+                  transition={{ delay: 0.1 }}
                   className={`rounded-[30px] p-8 ${
                     theme === "dark"
                       ? "bg-[#1a1a2e]/60 border border-[#6a5acd]/20"
@@ -374,22 +362,22 @@ const ServicesSection = () => {
                   }`}
                 >
                   <h3
-                    className={`text-lg font-bold mb-6 flex items-center ${
+                    className={`text-lg font-bold mb-6 flex items-center justify-center ${
                       theme === "dark" ? "text-[#00bfff]" : "text-[#8a2be2]"
                     }`}
                   >
                     <Zap className="w-5 h-5 mr-2" />
-                    {category}
+                    Frontend
                   </h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                    {techs.map((tech, techIndex) => (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {groupedTechnologies["Frontend"].map((tech, techIndex) => (
                       <motion.div
                         key={tech.name}
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{
-                          delay: categoryIndex * 0.05 + techIndex * 0.03,
+                          delay: 0.05 + techIndex * 0.03,
                           type: "spring",
                           stiffness: 200,
                           damping: 15,
@@ -431,8 +419,155 @@ const ServicesSection = () => {
                     ))}
                   </div>
                 </motion.div>
-              ))}
-          </div>
+              )}
+
+              {/* Backend Box */}
+              {groupedTechnologies["Backend"] && (
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className={`rounded-[30px] p-8 ${
+                    theme === "dark"
+                      ? "bg-[#1a1a2e]/60 border border-[#6a5acd]/20"
+                      : "bg-gradient-to-r from-slate-50 to-white border border-gray-200 shadow-lg"
+                  }`}
+                >
+                  <h3
+                    className={`text-lg font-bold mb-6 flex items-center justify-center ${
+                      theme === "dark" ? "text-[#00bfff]" : "text-[#8a2be2]"
+                    }`}
+                  >
+                    <Zap className="w-5 h-5 mr-2" />
+                    Backend
+                  </h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {groupedTechnologies["Backend"].map((tech, techIndex) => (
+                      <motion.div
+                        key={tech.name}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          delay: 0.15 + techIndex * 0.03,
+                          type: "spring",
+                          stiffness: 200,
+                          damping: 15,
+                        }}
+                        whileHover={{ y: -5, scale: 1.05 }}
+                        className={`flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-300 ${
+                          theme === "dark"
+                            ? "bg-[#1a1a2e]/40 hover:bg-[#1a1a2e] border border-[#6a5acd]/10 hover:border-[#00bfff]/50"
+                            : "bg-white/80 hover:bg-white border border-gray-200 hover:border-[#8a2be2]/50 shadow-sm hover:shadow-md"
+                        }`}
+                      >
+                        {tech.logo ? (
+                          <div className="w-12 h-12 mb-2 flex items-center justify-center">
+                            <img
+                              src={tech.logo}
+                              alt={tech.name}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                        ) : (
+                          <div
+                            className={`w-12 h-12 mb-2 rounded-lg flex items-center justify-center ${
+                              theme === "dark"
+                                ? "bg-gradient-to-br from-[#8a2be2] to-[#6a5acd]"
+                                : "bg-gradient-to-br from-[#8a2be2] to-[#6a5acd]"
+                            }`}
+                          >
+                            <Code2 className="w-6 h-6 text-white" />
+                          </div>
+                        )}
+                        <span
+                          className={`text-xs font-medium text-center mt-1 ${
+                            theme === "dark" ? "text-gray-300" : "text-gray-700"
+                          }`}
+                        >
+                          {tech.name}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          )}
+
+          {/* Database Section */}
+          {groupedTechnologies["Database"] && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className={`rounded-[30px] p-8 mb-10 ${
+                theme === "dark"
+                  ? "bg-[#1a1a2e]/60 border border-[#6a5acd]/20"
+                  : "bg-gradient-to-r from-slate-50 to-white border border-gray-200 shadow-lg"
+              }`}
+            >
+              <h3
+                className={`text-lg font-bold mb-6 flex items-center justify-center ${
+                  theme === "dark" ? "text-[#00bfff]" : "text-[#8a2be2]"
+                }`}
+              >
+                <Zap className="w-5 h-5 mr-2" />
+                Database
+              </h3>
+              <div className="flex flex-wrap justify-center gap-4">
+                {groupedTechnologies["Database"].map((tech, techIndex) => (
+                  <motion.div
+                    key={tech.name}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      delay: techIndex * 0.03,
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                    }}
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    className={`flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-300 w-[120px] sm:w-[140px] ${
+                      theme === "dark"
+                        ? "bg-[#1a1a2e]/40 hover:bg-[#1a1a2e] border border-[#6a5acd]/10 hover:border-[#00bfff]/50"
+                        : "bg-white/80 hover:bg-white border border-gray-200 hover:border-[#8a2be2]/50 shadow-sm hover:shadow-md"
+                    }`}
+                  >
+                    {tech.logo ? (
+                      <div className="w-12 h-12 mb-2 flex items-center justify-center">
+                        <img
+                          src={tech.logo}
+                          alt={tech.name}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    ) : (
+                      <div
+                        className={`w-12 h-12 mb-2 rounded-lg flex items-center justify-center ${
+                          theme === "dark"
+                            ? "bg-gradient-to-br from-[#8a2be2] to-[#6a5acd]"
+                            : "bg-gradient-to-br from-[#8a2be2] to-[#6a5acd]"
+                        }`}
+                      >
+                        <Code2 className="w-6 h-6 text-white" />
+                      </div>
+                    )}
+                    <span
+                      className={`text-xs font-medium text-center mt-1 ${
+                        theme === "dark" ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      {tech.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
 
           {/* Platforms & Tools Marquee Section */}
           <motion.div
@@ -440,7 +575,7 @@ const ServicesSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className={`rounded-[30px] p-8 ${
+            className={`mt-10 md:mt-12 lg:mt-16 rounded-[30px] p-8 ${
               theme === "dark"
                 ? "bg-[#1a1a2e]/60 border border-[#6a5acd]/20"
                 : "bg-gradient-to-r from-slate-50 to-white border border-gray-200 shadow-lg"

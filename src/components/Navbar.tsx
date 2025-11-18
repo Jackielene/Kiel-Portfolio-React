@@ -27,43 +27,76 @@ const Navbar = ({
   }, []);
 
   const handleSectionClick = (section: string) => {
-    // Handle section navigation
-    if (section === "Home") {
-      // Scroll to top for Home section
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    } else if (section === "Projects") {
-      // Scroll to Projects section
-      const projectsSection = document.getElementById("projects");
-      if (projectsSection) {
-        projectsSection.scrollIntoView({ behavior: "smooth" });
-      }
-    } else if (section === "Services") {
-      // Scroll to Services section
-      const servicesSection = document.getElementById("services");
-      if (servicesSection) {
-        servicesSection.scrollIntoView({ behavior: "smooth" });
-      }
-    } else if (section === "About") {
-      // Scroll to About section
-      const aboutSection = document.getElementById("about");
-      if (aboutSection) {
-        aboutSection.scrollIntoView({ behavior: "smooth" });
-      }
-    } else if (section === "Contact") {
-      // Scroll to Contact section
-      const contactSection = document.getElementById("contact");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      // For other sections, use the onSectionClick prop
-      onSectionClick(section);
-    }
+    // Restore body overflow first to allow scrolling
+    document.body.style.overflow = '';
+    
+    // Close menu immediately for better UX
     setIsMobileMenuOpen(false);
+    
+    // Use setTimeout with minimal delay to ensure overflow is restored and DOM is ready
+    setTimeout(() => {
+      // Handle section navigation
+      if (section === "Home") {
+        // Scroll to top for Home section
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      } else {
+        // Map section names to IDs
+        const sectionMap: Record<string, string> = {
+          "Projects": "projects",
+          "Services": "services",
+          "About": "about",
+          "Contact": "contact"
+        };
+        
+        const sectionId = sectionMap[section];
+        if (sectionId) {
+          const targetSection = document.getElementById(sectionId);
+          if (targetSection) {
+            // Calculate offset for fixed navbar
+            const navbarHeight = 80; // Approximate navbar height
+            const elementPosition = targetSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        } else {
+          // For other sections, use the onSectionClick prop
+          onSectionClick(section);
+        }
+      }
+    }, 50); // Small delay to ensure menu closes and overflow is restored
   };
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isMobileMenuOpen) {
+        const target = event.target as HTMLElement;
+        if (!target.closest('nav')) {
+          setIsMobileMenuOpen(false);
+          document.body.style.overflow = ''; // Restore body scroll
+        }
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'hidden'; // Prevent body scroll when menu is open
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      if (!isMobileMenuOpen) {
+        document.body.style.overflow = '';
+      }
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <motion.nav
@@ -125,12 +158,29 @@ const Navbar = ({
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center gap-3">
+          {/* Mobile Theme Toggle */}
           <motion.button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-foreground cursor-pointer"
+            onClick={toggleTheme}
+            className="cursor-pointer p-2 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition duration-300 shadow-sm hover:shadow-lg z-50 relative"
+            whileHover={{ scale: 1.15, rotate: 20 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </motion.button>
+          
+          <motion.button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsMobileMenuOpen((prev) => !prev);
+            }}
+            className="p-2 text-foreground cursor-pointer z-50 relative touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
             whileTap={{ scale: 0.9 }}
             aria-label="Toggle mobile menu"
+            aria-expanded={isMobileMenuOpen}
+            type="button"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
@@ -141,7 +191,7 @@ const Navbar = ({
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden bg-background/95 backdrop-blur-md shadow-lg"
+            className="md:hidden bg-background/95 backdrop-blur-md shadow-lg z-40 relative"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -149,33 +199,21 @@ const Navbar = ({
           >
             <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
               {sections.map((section) => (
-                <motion.button
+                <button
                   key={section}
-                  onClick={() => handleSectionClick(section)}
-                  className="py-2 text-left cursor-pointer transition-colors duration-300"
-                  whileHover={{ x: 10, scale: 1.03 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleSectionClick(section);
+                  }}
+                  className="py-3 text-left cursor-pointer transition-colors duration-200 w-full hover:bg-primary/10 rounded-md px-2 active:bg-primary/20"
+                  type="button"
                 >
                   <SAOText variant="p" className={activeSection === section ? "text-primary font-semibold" : "text-foreground hover:text-primary"}>
                     {section}
                   </SAOText>
-                </motion.button>
+                </button>
               ))}
-
-              {/* Mobile Theme Toggle */}
-              <div className="flex items-center justify-between pt-2 border-t border-border">
-                <span className="text-sm text-muted-foreground">Toggle theme</span>
-                <motion.button
-                  onClick={toggleTheme}
-                  className="cursor-pointer p-2 rounded-full bg-primary/10 text-primary hover:bg-primary/30 transition duration-300 shadow-sm hover:shadow-md"
-                  whileHover={{ scale: 1.1, rotate: 20 }}
-                  whileTap={{ scale: 0.9 }}
-                  aria-label="Toggle theme"
-                >
-                  {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-                </motion.button>
-              </div>
             </div>
           </motion.div>
         )}

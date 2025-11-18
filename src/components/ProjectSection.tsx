@@ -5,6 +5,7 @@ import { Badge } from ".././components/ui/badge";
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
 } from ".././components/ui/dialog";
 import { Button } from ".././components/ui/button";
 import { ExternalLink, Github, X } from "lucide-react";
@@ -448,10 +449,11 @@ const ProjectsSection = () => {
         onOpenChange={() => selectedProject && closeProjectModal()}
       >
         {selectedProject && (
-          <DialogContent className="max-w-5xl p-0 overflow-hidden bg-background/95 backdrop-blur-sm border-none shadow-2xl rounded-xl">
+          <DialogContent className="max-w-5xl w-[95vw] max-h-[95vh] p-0 overflow-y-auto bg-background/95 backdrop-blur-sm border-none shadow-2xl rounded-xl mx-2 sm:mx-4">
+            <DialogTitle className="sr-only">{selectedProject.title} - Project Details</DialogTitle>
             <div className="relative">
               {/* Hero image with gradient overlay */}
-              <div className="relative h-64 md:h-80 w-full overflow-hidden rounded-t-xl">
+              <div className="relative h-48 sm:h-64 md:h-80 w-full overflow-hidden rounded-t-xl">
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
@@ -464,27 +466,27 @@ const ProjectsSection = () => {
                   variant="ghost"
                   size="icon"
                   onClick={closeProjectModal}
-                  className="absolute top-4 right-4 rounded-full bg-black border border-gray-400 hover:bg-black/80 text-white z-10 transition-all duration-200 hover:scale-110 shadow-md"
+                  className="absolute top-2 right-2 sm:top-4 sm:right-4 rounded-full bg-black/70 border border-gray-400/50 hover:bg-black/90 text-white z-10 transition-all duration-200 hover:scale-110 shadow-md w-8 h-8 sm:w-10 sm:h-10"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
               </div>
               
               {/* Title and description positioned over the gradient */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h2 className="text-2xl md:text-3xl font-bold mb-2">{selectedProject.title}</h2>
-                <p className="text-white/80 max-w-3xl">{selectedProject.description}</p>
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2 leading-tight">{selectedProject.title}</h2>
+                <p className="text-white/80 text-sm sm:text-base line-clamp-2 sm:line-clamp-none">{selectedProject.description}</p>
               </div>
             </div>
             
-            <div className="p-6 md:p-8 space-y-8">
+            <div className="p-4 sm:p-6 md:p-8 space-y-6 sm:space-y-8">
               {/* Technologies used with animated badges */}
               <div>
-                <h4 className="text-lg font-semibold mb-3 flex items-center text-white">
-                  <span className="w-8 h-8 mr-2 rounded-full bg-primary/10 flex items-center justify-center">
-                    <span className="text-primary text-sm">⚙️</span>
+                <h4 className="text-base sm:text-lg font-semibold mb-3 flex items-center text-white">
+                  <span className="w-7 h-7 sm:w-8 sm:h-8 mr-2 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <span className="text-primary text-xs sm:text-sm">⚙️</span>
                   </span>
-                  Technologies Used
+                  <span className="text-sm sm:text-base">Technologies Used</span>
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedProject.technologies.map((tech, index) => (
@@ -494,7 +496,7 @@ const ProjectsSection = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05 }}
                     >
-                      <Badge variant="secondary" className="px-3 py-1 text-sm text-white">
+                      <Badge variant="secondary" className="px-2 py-1 sm:px-3 text-xs sm:text-sm text-white">
                         {tech.name}
                       </Badge>
                     </motion.div>
@@ -504,13 +506,13 @@ const ProjectsSection = () => {
               
               {/* About this project with icon */}
               <div>
-                <h4 className="text-lg font-semibold mb-3 flex items-center text-white">
-                  <span className="w-8 h-8 mr-2 rounded-full bg-primary/10 flex items-center justify-center">
-                    <span className="text-primary text-sm">📝</span>
+                <h4 className="text-base sm:text-lg font-semibold mb-3 flex items-center text-white">
+                  <span className="w-7 h-7 sm:w-8 sm:h-8 mr-2 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <span className="text-primary text-xs sm:text-sm">📝</span>
                   </span>
-                  About this project
+                  <span className="text-sm sm:text-base">About this project</span>
                 </h4>
-                <p className="text-white leading-relaxed">
+                <p className="text-white text-sm sm:text-base leading-relaxed">
                   {selectedProject.detailedDescription || selectedProject.description}
                 </p>
               </div>
@@ -518,13 +520,13 @@ const ProjectsSection = () => {
               {/* Screenshots section with improved grid */}
               {selectedProject.screenshots && selectedProject.screenshots.length > 1 && (
                 <div>
-                  <h4 className="text-lg font-semibold mb-3 flex items-center text-white">
-                    <span className="w-8 h-8 mr-2 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="text-primary text-sm">🖼️</span>
+                  <h4 className="text-base sm:text-lg font-semibold mb-3 flex items-center text-white">
+                    <span className="w-7 h-7 sm:w-8 sm:h-8 mr-2 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary text-xs sm:text-sm">🖼️</span>
                     </span>
-                    Screenshots
+                    <span className="text-sm sm:text-base">Screenshots</span>
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                     {selectedProject.screenshots.slice(1).map((screenshot, index) => (
                       <motion.div
                         key={index}
@@ -546,18 +548,19 @@ const ProjectsSection = () => {
               )}
               
               {/* Action buttons with improved styling */}
-              <div className="flex flex-wrap gap-4 pt-6 border-t border-border">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-border">
                 {selectedProject.liveUrl && (
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    className="w-full sm:w-auto"
                   >
-                    <Button asChild className="px-6 py-5 bg-primary hover:bg-primary/90 shadow-lg text-white">
+                    <Button asChild className="w-full sm:w-auto px-4 sm:px-6 py-3 sm:py-5 bg-primary hover:bg-primary/90 shadow-lg text-white text-sm sm:text-base">
                       <a
                         href={selectedProject.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center"
+                        className="flex items-center justify-center"
                       >
                         <ExternalLink className="mr-2 h-4 w-4" />
                         View Live Demo
@@ -570,13 +573,14 @@ const ProjectsSection = () => {
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    className="w-full sm:w-auto"
                   >
-                    <Button variant="outline" asChild className="px-6 py-5 border-2 hover:bg-secondary/10 text-white">
+                    <Button variant="outline" asChild className="w-full sm:w-auto px-4 sm:px-6 py-3 sm:py-5 border-2 hover:bg-secondary/10 text-white text-sm sm:text-base">
                       <a
                         href={selectedProject.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center"
+                        className="flex items-center justify-center"
                       >
                         <Github className="mr-2 h-4 w-4" />
                         Source Code
