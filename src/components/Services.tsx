@@ -129,6 +129,7 @@ const ServicesSection = () => {
     // Platforms & Tools (combined for marquee)
     { name: "WordPress", category: "Platforms", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" },
     { name: "GoHighLevel", category: "Platforms", logo: "https://logo.clearbit.com/gohighlevel.com" },
+    { name: "Vercel", category: "Platforms", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
     { name: "Figma", category: "Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
     { name: "Canva", category: "Tools", logo: "https://img.icons8.com/color/256/canva.png" },
     { name: "Trello", category: "Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg" },
@@ -138,7 +139,11 @@ const ServicesSection = () => {
     { name: "Hostinger", category: "Tools", logo: "https://logo.clearbit.com/hostinger.com" },
     { name: "Zapier", category: "Tools", logo: "https://cdn.worldvectorlogo.com/logos/zapier.svg" },
     { name: "Google Workspace", category: "Tools", logo: "https://ssl.gstatic.com/images/branding/product/1x/gsa_32dp.png" },
-    { name: "Microsoft Office", category: "Tools", logo: "https://img.icons8.com/color/256/microsoft-office-2019.png" }
+    { name: "Microsoft Office", category: "Tools", logo: "https://img.icons8.com/color/256/microsoft-office-2019.png" },
+    { name: "VS Code", category: "Tools", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+    { name: "Cursor AI", category: "Tools", logo: "https://logo.clearbit.com/cursor.com" },
+    { name: "ChatGPT", category: "Tools", logo: "https://logo.clearbit.com/openai.com" },
+    { name: "Lovable AI", category: "Tools", logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FF6B6B;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23FF8E8E;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23grad)'/%3E%3Cpath d='M30 50 L45 65 L70 35' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" }
   ];
 
   const containerVariants = {
