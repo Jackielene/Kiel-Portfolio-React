@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import HeroSection from "./HeroSection"
 import Navbar from "./Navbar"
 import ProjectsSection from "./ProjectSection"
+import EmailCampaignSection from "./EmailCampaignSection"
 import ServicesSection from "./Services"
 import CertificatesSection from "./Certificates"
 import ThemeProvider, { useTheme } from "./ThemeProvider"
@@ -1160,6 +1161,7 @@ const Home = () => {
               <Navbar />
               <HeroSection />
               <ProjectsSection />
+              <EmailCampaignSection />
               <ServicesSection />
               <CertificatesSection />
               <AboutSection />

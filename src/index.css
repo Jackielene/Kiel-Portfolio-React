@@ -184,6 +184,12 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  /* Masonry grid utilities */
+  .break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
 }
 
 @keyframes shimmer {
