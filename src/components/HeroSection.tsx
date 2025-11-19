@@ -227,7 +227,7 @@ const HeroSection = () => {
             >
               {[
                 { number: "11", label: "Projects" },
-                { number: "2+", label: "Years Exp" },
+                { number: "3+", label: "Years Exp" },
                 { number: "100%", label: "Satisfaction" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
