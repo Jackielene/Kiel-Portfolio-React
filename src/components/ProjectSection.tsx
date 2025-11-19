@@ -23,6 +23,8 @@ import project8 from "../assets/project-8.png";
 import project9 from "../assets/project-9.png";
 import project10 from "../assets/project-10.png";
 import project11 from "../assets/project-11.png";
+import project12 from "../assets/project 12.png";
+import project13 from "../assets/project 13.png";
 
 
 interface Technology {
@@ -45,8 +47,42 @@ interface Project {
 const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // Mock data for projects
+  // Mock data for projects - ReactJS projects prioritized first
   const projects: Project[] = [
+    // ReactJS Projects (Prioritized)
+    {
+      id: "12",
+      title: "Tropiride Siargao",
+      description: "A web application made from Laravel and ReactJS with a real-time GPS tracking system for vehicle reservation tracking.",
+      image: project12,
+      technologies: [
+        { name: "Laravel" },
+        { name: "ReactJS" },
+        { name: "GPS Tracking" },
+        { name: "Real-time System" },
+        { name: "MySQL" },
+      ],
+      liveUrl: "https://example.com/tropiride",
+      githubUrl: "https://github.com/Jackielene/Tropiride",
+      detailedDescription:
+        "Tropiride Siargao is a comprehensive web application built with Laravel and ReactJS that revolutionizes vehicle reservation and tracking. The platform features a real-time GPS tracking system that allows users to monitor vehicle locations in real-time, making it perfect for rental services and transportation management. This innovative solution combines robust backend architecture with a modern, responsive frontend to deliver seamless vehicle reservation and tracking capabilities.",
+    },
+    {
+      id: "13",
+      title: "Purple Track Academy",
+      description: "A web application made from Laravel and ReactJS used by call center trainers and recruiter officers to train and hire their scholar waves for call center agents.",
+      image: project13,
+      technologies: [
+        { name: "Laravel" },
+        { name: "ReactJS" },
+        { name: "MySQL" },
+        { name: "Training Management" },
+      ],
+      liveUrl: "https://www.purpletrackacademy.com/",
+      githubUrl: "https://github.com/pta-portal-dev/pta-web-app",
+      detailedDescription:
+        "Purple Track Academy is a specialized web application designed for call center training and recruitment management. Built with Laravel and ReactJS, this platform empowers call center trainers and recruiter officers to efficiently manage scholar waves, conduct training programs, and streamline the hiring process for call center agents. The application provides comprehensive tools for tracking trainee progress, managing recruitment pipelines, and ensuring smooth onboarding of new call center professionals.",
+    },
     {
       id: "1",
       title: "NetSafeScan",
@@ -67,6 +103,37 @@ const ProjectsSection = () => {
       detailedDescription:
         "NetSafeScan is a modern and responsive web application that empowers users to check the safety of URLs before visiting them. It scans links for potential threats and malicious content, helping ensure a secure browsing experience. I built NetSafeScan using React (Next.js) and Tailwind CSS for the front end, while the back end is powered by Node.js, Express, and PostgreSQL for efficient data processing and reliable storage. This project highlights my focus on security, usability, and building robust full-stack web applications.",
     },
+    {
+      id: "4",
+      title: "InstaBooth",
+      description: "InstaBooth is a digital photobooth website that lets users capture polaroid-style images, apply filters, stickers, and downloadable png.",
+      image: project4,
+      technologies: [
+        { name: "ReactJS" },
+        { name: "Tailwind CSS" },
+        { name: "Framer Motion" },
+      ],
+      liveUrl: "https://insta-booth.vercel.app/",
+      githubUrl: "https://github.com/Jackielene/InstaBooth",
+      detailedDescription:
+        "InstaBooth is a web-based digital photobooth that allows users to capture fun and memorable moments with a creative twist. Designed with user experience in mind, the platform lets users take instant polaroid-style photos, apply filters, choose from a variety of frames and stickers, and download the final image as a PNG file — all from the convenience of their browser.",
+    },
+    {
+      id: "6",
+      title: "Cosmos",
+      description: "Cosmos is an interactive educational website that explores the wonders of the solar system.",
+      image: project6,
+      technologies: [
+        { name: "ReactJS" },
+        { name: "Tailwind CSS" },
+        { name: "Framer Motion" },
+      ],
+      liveUrl: "https://cosmos-six.vercel.app/",
+      githubUrl: "https://github.com/Jackielene/Cosmos",
+      detailedDescription:
+        "Cosmos is a modern web experience that explores the beauty, complexity, and wonder of the universe through an interactive and visually captivating platform. Designed to educate and inspire, Cosmos provides users with rich, dynamic content on celestial bodies, galaxies, space missions, and astronomical phenomena.",
+    },
+    // Non-ReactJS Projects
     {
       id: "2",
       title: "Siargao Travels Booking System",
@@ -104,21 +171,6 @@ const ProjectsSection = () => {
         "The IoT-Enabled Smoke Detector System is an innovative solution designed to enhance fire safety by improving response time and reliability during fire emergencies. It leverages IoT technology to detect harmful smoke levels in real time and instantly alert designated contacts through SMS notifications, including GPS coordinates of the incident location.",
     },
     {
-      id: "4",
-      title: "InstaBooth",
-      description: "InstaBooth is a digital photobooth website that lets users capture polaroid-style images, apply filters, stickers, and downloadable png.",
-      image: project4,
-      technologies: [
-        { name: "ReactJS" },
-        { name: "Tailwind CSS" },
-        { name: "Framer Motion" },
-      ],
-      liveUrl: "https://insta-booth.vercel.app/",
-      githubUrl: "https://github.com/Jackielene/InstaBooth",
-      detailedDescription:
-        "InstaBooth is a web-based digital photobooth that allows users to capture fun and memorable moments with a creative twist. Designed with user experience in mind, the platform lets users take instant polaroid-style photos, apply filters, choose from a variety of frames and stickers, and download the final image as a PNG file — all from the convenience of their browser.",
-    },
-    {
       id: "5",
       title: "SNSU Enrollment System",
       description: "A web-based platform designed to streamline student enrollment, grade management, and faculty submissions.",
@@ -135,21 +187,6 @@ const ProjectsSection = () => {
       githubUrl: "https://github.com/Jackielene/SNSU-Enrollment-Website",
       detailedDescription:
         "The SNSU Enrollment System is a web-based application developed for Surigao del Norte State University to streamline the student enrollment and grade management process. This system allows students to conveniently enroll in subjects, update personal information, and view their grades for currently enrolled courses.",
-    },
-    {
-      id: "6",
-      title: "Cosmos",
-      description: "Cosmos is an interactive educational website that explores the wonders of the solar system.",
-      image: project6,
-      technologies: [
-        { name: "ReactJS" },
-        { name: "Tailwind CSS" },
-        { name: "Framer Motion" },
-      ],
-      liveUrl: "https://cosmos-six.vercel.app/",
-      githubUrl: "https://github.com/Jackielene/Cosmos",
-      detailedDescription:
-        "Cosmos is a modern web experience that explores the beauty, complexity, and wonder of the universe through an interactive and visually captivating platform. Designed to educate and inspire, Cosmos provides users with rich, dynamic content on celestial bodies, galaxies, space missions, and astronomical phenomena.",
     },
     {
       id: "7",
