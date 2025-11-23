@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import HeroSection from "./HeroSection"
 import Navbar from "./Navbar"
 import ProjectsSection from "./ProjectSection"
-import EmailCampaignSection from "./EmailCampaignSection"
 import ServicesSection from "./Services"
 import CertificatesSection from "./Certificates"
 import ThemeProvider, { useTheme } from "./ThemeProvider"
@@ -182,9 +181,7 @@ const AboutSection = () => {
                   <ul className="space-y-2">
                     {[
                       "Building responsive websites that work flawlessly on all devices",
-                      "Designing high-converting GoHighLevel funnels that drive sales",
                       "Setting up CRM automations that streamline business processes",
-                      "Creating effective email and SMS campaigns that engage audiences",
                       "Building appointment workflows that reduce no-shows and increase bookings"
                     ].map((skill, index) => (
                       <motion.li
@@ -1161,7 +1158,6 @@ const Home = () => {
               <Navbar />
               <HeroSection />
               <ProjectsSection />
-              <EmailCampaignSection />
               <ServicesSection />
               <CertificatesSection />
               <AboutSection />

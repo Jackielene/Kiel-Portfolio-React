@@ -192,7 +192,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              {["Web Developer", "Funnel Designer/Builder", "Email Marketing Specialist", "CRM Specialist (GoHighLevel)"].map((role, index) => (
+              {["Web Developer", "CRM Specialist (GoHighLevel)"].map((role, index) => (
                 <motion.span
                   key={role}
                   initial={{ opacity: 0, scale: 0.8 }}
