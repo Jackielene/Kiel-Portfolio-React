@@ -226,7 +226,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.7 }}
             >
               {[
-                { number: "11", label: "Projects" },
+                { number: "13", label: "Projects" },
                 { number: "3+", label: "Years Exp" },
                 { number: "100%", label: "Satisfaction" },
               ].map((stat) => (
