@@ -25,8 +25,15 @@ import project10 from "../assets/project-10.png";
 import project11 from "../assets/project-11.png";
 import project12 from "../assets/project 12.png";
 import project13 from "../assets/project 13.png";
-
-
+import newFunnel1 from "../assets/New Funnel 1.mp4";
+import newFunnel2 from "../assets/New Funnel 2.mp4";
+import automation1 from "../assets/Automation 1.png";
+import automation2 from "../assets/Automation 2.png";
+import automation3 from "../assets/Automation 3.png";
+import automation4 from "../assets/Automation 4.png";
+import email1 from "../assets/Email 1.png";
+import email2 from "../assets/Email 2.png";
+import email3 from "../assets/Email 3.png";
 interface Technology {
   name: string;
   icon?: React.ReactNode;
@@ -477,6 +484,217 @@ const ProjectsSection = () => {
               </Card>
             </motion.div>
           ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-24 space-y-8"
+        >
+          <div className="text-center space-y-4">
+            <SAOText variant="h3">High-Converting Funnel Builds</SAOText>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              I craft revenue-focused funnels that combine persuasive storytelling,
+              frictionless UX, and data-backed conversion tactics. Below are two
+              live builds that highlight how I guide cold traffic into high-intent
+              leads with captivating hero narratives, irresistible offers, and
+              strategic trust markers.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            {[
+              {
+                id: "funnel-1",
+                title: "Prime Lead Capture Funnel",
+                video: newFunnel1,
+                copy: "Engineered for coaches who need a consistent stream of discovery calls. This funnel warms visitors with a credibility-packed hero section, nurtures objections through social proof, and closes with a scarcity-driven booking flow.",
+              },
+              {
+                id: "funnel-2",
+                title: "Premium Offer Launch Funnel",
+                video: newFunnel2,
+                copy: "Built for a high-ticket launch, this funnel combines cinematic visuals, bold value stacking, and an interactive walkthrough that keeps attention anchored until the CTA fires. Perfect for productized services and live cohorts.",
+              },
+            ].map((funnel, index) => (
+              <motion.div
+                key={funnel.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="rounded-2xl border border-white/10 bg-card/60 backdrop-blur-lg shadow-xl p-6 space-y-4"
+              >
+                <div className="relative rounded-xl overflow-hidden shadow-2xl">
+                  <video
+                    src={funnel.video}
+                    autoPlay
+                    loop
+                    playsInline
+                    muted
+                    className="w-full h-full aspect-video object-cover pointer-events-none"
+                  />
+                </div>
+                <h4 className="text-xl font-semibold">{funnel.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {funnel.copy}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-24 space-y-8"
+        >
+          <div className="text-center space-y-4">
+            <SAOText variant="h3">Automation Workflows</SAOText>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Beyond funnels, I streamline back-end operations with automations
+              that sync CRMs, alert teams in real time, and eliminate busywork.
+              Each build pairs crystal-clear reporting with rock-solid reliability
+              so you win back more focus hours without losing visibility.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-12">
+            {[
+              {
+                id: "automation-1",
+                title: "New Lead Automation",
+                image: automation1,
+                copy: "Welcomes every fresh lead instantly, tags the source, enriches their profile, and drops them into the exact nurture path that matches their intent—no manual triage required.",
+              },
+              {
+                id: "automation-2",
+                title: "Confirmation + Reminder Engine",
+                image: automation2,
+                copy: "Sends branded confirmations immediately after booking, then schedules SMS and email reminders that escalate urgency as the appointment nears to cut down on day-of surprises.",
+              },
+              {
+                id: "automation-3",
+                title: "No-Show Recovery Flow",
+                image: automation3,
+                copy: "Detects missed calls automatically, fires off empathetic follow-ups, and routes the lead into a save sequence that nudges them back onto your calendar without human chasing.",
+              },
+              {
+                id: "automation-4",
+                title: "One-Click Rescheduling Concierge",
+                image: automation4,
+                copy: "Hands prospects a frictionless reschedule experience with live availability, double-confirmation notices, and Slack alerts for your team so nobody slips through the cracks.",
+              },
+            ].map((automation, index) => (
+              <motion.div
+                key={automation.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="relative rounded-3xl bg-card/70 backdrop-blur-xl shadow-2xl p-[1px] flex flex-col lg:flex-row gap-6 before:absolute before:inset-[-1px] before:rounded-[1.7rem] before:bg-gradient-to-r before:from-primary/20 before:via-purple-500/20 before:to-primary/20 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+              >
+                <div className="relative flex-1 rounded-3xl overflow-hidden shadow-[0_25px_80px_rgba(0,0,0,0.45)] border border-white/10 min-h-[320px] md:min-h-[420px] lg:min-h-[500px] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+                  <img
+                    src={automation.image}
+                    alt={automation.title}
+                    className="w-full h-full object-contain bg-gradient-to-br from-black/40 via-black/20 to-transparent"
+                  />
+                </div>
+                <div className="flex-1 space-y-3 self-center py-6 px-6">
+                  <h4 className="text-2xl font-semibold">{automation.title}</h4>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    {automation.copy}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-24 space-y-8"
+        >
+          <div className="text-center space-y-4">
+            <SAOText variant="h3">Email Marketing Campaigns</SAOText>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Nurture sequences that feel bespoke, prime inbox opens, and drive
+              decisive clicks. Each sequence is strategically scheduled and
+              automated, so subscribers receive the right narrative at the right
+              moment. These campaigns blend storytelling, urgency, and
+              design-forward layouts so your message rises above the noise.
+            </p>
+          </div>
+
+          <div className="space-y-12">
+            {[
+              {
+                id: "email-1",
+                title: "Launch Warm-Up Series",
+                image: email1,
+                copy: "A three-touch cadence that unlocks over three days: teaser on Day 1, authority builder on Day 3, offer reveal on Day 5. The entire drip is locked into automation so every new lead experiences the same momentum regardless of when they enter.",
+                stat: "41% open lift vs. previous launch",
+              },
+              {
+                id: "email-2",
+                title: "Event Confirmation + Reminder Flow",
+                image: email2,
+                copy: "Confirms immediately after registration, then fires reminders at T-24h, T-4h, and T-30m across email + SMS. Each touch rehashes value, adds FAQs, and escalates urgency to keep attendance sky-high.",
+                stat: "87% of registrants attended live",
+              },
+              {
+                id: "email-3",
+                title: "Reactivation Win-Back",
+                image: email3,
+                copy: "Behavior-triggered journey: once a lead ghosts for 21 days, this plain-text check-in lands, followed by an incentive reminder 48h later and a final PS nudge at the 5-day mark—all automated so your team never has to chase manually.",
+                stat: "24% of cold leads reactivated in 72h",
+              },
+            ].map((campaign, index) => (
+              <motion.div
+                key={campaign.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="relative rounded-3xl bg-card/80 backdrop-blur-2xl shadow-[0_30px_120px_rgba(0,0,0,0.45)] p-[1px] overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/25 before:via-purple-500/25 before:to-primary/25 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+              >
+                <div className="relative rounded-[1.7rem] bg-background/80 p-8 flex flex-col lg:flex-row gap-10 items-center">
+                  <div className="flex-1 w-full">
+                    <div className="rounded-2xl border border-white/15 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6 shadow-2xl">
+                      <img
+                        src={campaign.image}
+                        alt={campaign.title}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-1 space-y-4">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs uppercase tracking-[0.2em] text-primary">
+                      Email Momentum
+                    </div>
+                    <h4 className="text-2xl font-semibold">{campaign.title}</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {campaign.copy}
+                    </p>
+                    <div className="inline-flex items-center gap-2 rounded-2xl bg-primary/15 border border-primary/30 px-4 py-2 text-sm text-primary/80">
+                      <span className="text-base font-semibold text-primary">
+                        {campaign.stat}
+                      </span>
+                      <span>measured across the latest send</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
 
