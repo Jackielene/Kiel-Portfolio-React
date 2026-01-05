@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { Card, CardContent } from ".././components/ui/card";
 import { Badge } from ".././components/ui/badge";
 import {
@@ -27,6 +28,8 @@ import project12 from "../assets/project 12.png";
 import project13 from "../assets/project 13.png";
 import newFunnel1 from "../assets/New Funnel 1.mp4";
 import newFunnel2 from "../assets/New Funnel 2.mp4";
+import permadeckFunnel from "../assets/Permadeck.mp4";
+import schoolFreightWorksFunnel from "../assets/School Freight Works.mp4";
 import automation1 from "../assets/Automation 1.png";
 import automation2 from "../assets/Automation 2.png";
 import automation3 from "../assets/Automation 3.png";
@@ -295,13 +298,13 @@ const ProjectsSection = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 12,
       },
@@ -319,15 +322,79 @@ const ProjectsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="space-y-8"
         >
-          <SAOText variant="h2" className="mb-4">
-            My Projects
-          </SAOText>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore my recent work showcasing my skills in front-end
-            development, UI/UX design, and interactive web applications.
-          </p>
+          <div className="text-center space-y-4">
+            <SAOText variant="h3">High-Converting Funnel Builds</SAOText>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              I craft revenue-focused funnels that combine persuasive storytelling,
+              frictionless UX, and data-backed conversion tactics. Below are
+              live builds that highlight how I guide cold traffic into high-intent
+              leads with captivating hero narratives, irresistible offers, and
+              strategic trust markers.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            {[
+              {
+                id: "funnel-1",
+                title: "Memento Coaching Hub Prime Lead Capture Funnel",
+                video: newFunnel1,
+                copy: "Engineered for coaches who need a consistent stream of discovery calls. This funnel warms visitors with a credibility-packed hero section, nurtures objections through social proof, and closes with a scarcity-driven booking flow.",
+              },
+              {
+                id: "funnel-2",
+                title: "Growth Catalyst Consulting Premium Offer Launch Funnel",
+                video: newFunnel2,
+                copy: "Built for a high-ticket launch, this funnel combines cinematic visuals, bold value stacking, and an interactive walkthrough that keeps attention anchored until the CTA fires. Perfect for productized services and live cohorts.",
+              },
+              {
+                id: "funnel-3",
+                title: "Permadeck Exterior Concrete Coatings Funnel",
+                video: permadeckFunnel,
+                copy: "Permadeck is a next-generation epoxy resurfacing system that transforms concrete into a durable, slip-resistant, and low-maintenance finish.",
+              },
+              {
+                id: "funnel-4",
+                title: "School Freight Works Funnel",
+                video: schoolFreightWorksFunnel,
+                copy: "Portfolio funnel showing School Freight Works handling USDA commodity foods and cafeteria equipment with cold-chain monitoring, USDA-compliant drivers, and end-to-end delivery, install, and removal—ending in a clear CTA.",
+              },
+            ].map((funnel, index) => (
+              <motion.div
+                key={funnel.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="rounded-2xl border border-white/10 bg-card/60 backdrop-blur-lg shadow-xl p-6 space-y-4"
+              >
+                <div className="relative rounded-xl overflow-hidden shadow-2xl">
+                  <video
+                    src={funnel.video}
+                    autoPlay
+                    loop
+                    playsInline
+                    muted
+                    className="w-full h-full aspect-video object-cover pointer-events-none"
+                  />
+                </div>
+                <h4 className="text-xl font-semibold">{funnel.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {funnel.copy}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center space-y-3 mt-12">
+            <SAOText variant="h3">Website Builds</SAOText>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A selection of custom websites crafted for clarity, conversion, and
+              cohesive brand storytelling—built with modern front-end engineering
+              and thoughtful UX/UI.
+            </p>
+          </div>
         </motion.div>
 
         <motion.div
@@ -335,7 +402,7 @@ const ProjectsSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects.map((project, idx) => (
             <motion.div
@@ -365,9 +432,6 @@ const ProjectsSection = () => {
                 <div className="relative h-56 overflow-hidden">
                   {/* Animated gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay" />
-                  
-                  {/* Shimmer effect on hover */}
-                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out z-20 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
                   
                   <motion.img
                     src={project.image}
@@ -484,66 +548,6 @@ const ProjectsSection = () => {
               </Card>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-24 space-y-8"
-        >
-          <div className="text-center space-y-4">
-            <SAOText variant="h3">High-Converting Funnel Builds</SAOText>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
-              I craft revenue-focused funnels that combine persuasive storytelling,
-              frictionless UX, and data-backed conversion tactics. Below are two
-              live builds that highlight how I guide cold traffic into high-intent
-              leads with captivating hero narratives, irresistible offers, and
-              strategic trust markers.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {[
-              {
-                id: "funnel-1",
-                title: "Prime Lead Capture Funnel",
-                video: newFunnel1,
-                copy: "Engineered for coaches who need a consistent stream of discovery calls. This funnel warms visitors with a credibility-packed hero section, nurtures objections through social proof, and closes with a scarcity-driven booking flow.",
-              },
-              {
-                id: "funnel-2",
-                title: "Premium Offer Launch Funnel",
-                video: newFunnel2,
-                copy: "Built for a high-ticket launch, this funnel combines cinematic visuals, bold value stacking, and an interactive walkthrough that keeps attention anchored until the CTA fires. Perfect for productized services and live cohorts.",
-              },
-            ].map((funnel, index) => (
-              <motion.div
-                key={funnel.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="rounded-2xl border border-white/10 bg-card/60 backdrop-blur-lg shadow-xl p-6 space-y-4"
-              >
-                <div className="relative rounded-xl overflow-hidden shadow-2xl">
-                  <video
-                    src={funnel.video}
-                    autoPlay
-                    loop
-                    playsInline
-                    muted
-                    className="w-full h-full aspect-video object-cover pointer-events-none"
-                  />
-                </div>
-                <h4 className="text-xl font-semibold">{funnel.title}</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {funnel.copy}
-                </p>
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
 
         <motion.div
