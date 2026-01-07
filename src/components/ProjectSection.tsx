@@ -30,6 +30,7 @@ import newFunnel1 from "../assets/New Funnel 1.mp4";
 import newFunnel2 from "../assets/New Funnel 2.mp4";
 import permadeckFunnel from "../assets/Permadeck.mp4";
 import schoolFreightWorksFunnel from "../assets/School Freight Works.mp4";
+import beautyBizProFunnel from "../assets/BeatuyBizPro.mp4";
 import automation1 from "../assets/Automation 1.png";
 import automation2 from "../assets/Automation 2.png";
 import automation3 from "../assets/Automation 3.png";
@@ -338,6 +339,27 @@ const ProjectsSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {[
               {
+                id: "funnel-3",
+                title: "Permadeck Exterior Concrete Coatings Funnel",
+                video: permadeckFunnel,
+                copy: "Permadeck is a next-generation epoxy resurfacing system that transforms concrete into a durable, slip-resistant, and low-maintenance finish.",
+                previewUrl: "https://app.thesyndra.com/v2/preview/rGGoeTWh1awMbaFBm7oq",
+              },
+              {
+                id: "funnel-4",
+                title: "School Freight Works Funnel",
+                video: schoolFreightWorksFunnel,
+                copy: "Portfolio funnel showing School Freight Works handling USDA commodity foods and cafeteria equipment with cold-chain monitoring, USDA-compliant drivers, and end-to-end delivery, install, and removal—ending in a clear CTA.",
+                previewUrl: "https://app.thesyndra.com/v2/preview/pq0Uqt0C7PzUD6RMwoYL",
+              },
+              {
+                id: "funnel-5",
+                title: "Beauty Biz Pro Funnel",
+                video: beautyBizProFunnel,
+                copy: "Salon-focused funnel that spotlights premium beauty services, showcases client transformations, and routes visitors into quick-booking CTAs to turn curiosity into appointments.",
+                previewUrl: "https://app.beautybizai.com/v2/preview/xAc09krKPbcyZEk3MQBV?notrack=true",
+              },
+              {
                 id: "funnel-1",
                 title: "Memento Coaching Hub Prime Lead Capture Funnel",
                 video: newFunnel1,
@@ -348,18 +370,6 @@ const ProjectsSection = () => {
                 title: "Growth Catalyst Consulting Premium Offer Launch Funnel",
                 video: newFunnel2,
                 copy: "Built for a high-ticket launch, this funnel combines cinematic visuals, bold value stacking, and an interactive walkthrough that keeps attention anchored until the CTA fires. Perfect for productized services and live cohorts.",
-              },
-              {
-                id: "funnel-3",
-                title: "Permadeck Exterior Concrete Coatings Funnel",
-                video: permadeckFunnel,
-                copy: "Permadeck is a next-generation epoxy resurfacing system that transforms concrete into a durable, slip-resistant, and low-maintenance finish.",
-              },
-              {
-                id: "funnel-4",
-                title: "School Freight Works Funnel",
-                video: schoolFreightWorksFunnel,
-                copy: "Portfolio funnel showing School Freight Works handling USDA commodity foods and cafeteria equipment with cold-chain monitoring, USDA-compliant drivers, and end-to-end delivery, install, and removal—ending in a clear CTA.",
               },
             ].map((funnel, index) => (
               <motion.div
@@ -384,6 +394,23 @@ const ProjectsSection = () => {
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {funnel.copy}
                 </p>
+                {funnel.previewUrl && (
+                  <Button
+                    asChild
+                    size="sm"
+                    className="w-fit px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground"
+                  >
+                    <a
+                      href={funnel.previewUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2"
+                    >
+                      Preview
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </Button>
+                )}
               </motion.div>
             ))}
           </div>
