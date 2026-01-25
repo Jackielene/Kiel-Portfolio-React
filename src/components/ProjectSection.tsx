@@ -31,6 +31,8 @@ import newFunnel2 from "../assets/New Funnel 2.mp4";
 import permadeckFunnel from "../assets/Permadeck.mp4";
 import schoolFreightWorksFunnel from "../assets/School Freight Works.mp4";
 import beautyBizProFunnel from "../assets/BeatuyBizPro.mp4";
+import caliCustomWeldingFunnel from "../assets/Cali Custom Welding.mp4";
+import casaNegraCollectionFunnel from "../assets/Casa Negra Collection.mp4";
 import automation1 from "../assets/Automation 1.png";
 import automation2 from "../assets/Automation 2.png";
 import automation3 from "../assets/Automation 3.png";
@@ -358,6 +360,20 @@ const ProjectsSection = () => {
                 video: beautyBizProFunnel,
                 copy: "Salon-focused funnel that spotlights premium beauty services, showcases client transformations, and routes visitors into quick-booking CTAs to turn curiosity into appointments.",
                 previewUrl: "https://app.beautybizai.com/v2/preview/xAc09krKPbcyZEk3MQBV?notrack=true",
+              },
+              {
+                id: "funnel-6",
+                title: "Cali Custom Welding Funnel",
+                video: caliCustomWeldingFunnel,
+                copy: "A conversion-focused funnel designed for Cali Custom Welding, showcasing their premium welding services with compelling visuals and strategic trust markers that guide visitors toward booking consultations.",
+                previewUrl: "https://app.thesyndra.com/v2/preview/iKPQhUNAj3WRTZJhNuMT",
+              },
+              {
+                id: "funnel-7",
+                title: "Casa Negra Collection Funnel",
+                video: casaNegraCollectionFunnel,
+                copy: "An elegant funnel for Casa Negra Collection that highlights their curated collection with sophisticated design, immersive storytelling, and seamless user experience that converts visitors into customers.",
+                previewUrl: "https://casanegracollection.com",
               },
               {
                 id: "funnel-1",
