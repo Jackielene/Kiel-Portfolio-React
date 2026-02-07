@@ -33,6 +33,8 @@ import schoolFreightWorksFunnel from "../assets/School Freight Works.mp4";
 import beautyBizProFunnel from "../assets/BeatuyBizPro.mp4";
 import caliCustomWeldingFunnel from "../assets/Cali Custom Welding.mp4";
 import casaNegraCollectionFunnel from "../assets/Casa Negra Collection.mp4";
+import dermaluxeSkinClinicFunnel from "../assets/Dermaluxe Skin Clinic.mp4";
+import primeDermaFunnel from "../assets/Prime Derma.mp4";
 import automation1 from "../assets/Automation 1.png";
 import automation2 from "../assets/Automation 2.png";
 import automation3 from "../assets/Automation 3.png";
@@ -374,6 +376,20 @@ const ProjectsSection = () => {
                 video: casaNegraCollectionFunnel,
                 copy: "An elegant funnel for Casa Negra Collection that highlights their curated collection with sophisticated design, immersive storytelling, and seamless user experience that converts visitors into customers.",
                 previewUrl: "https://casanegracollection.com",
+              },
+              {
+                id: "funnel-8",
+                title: "DermaLuxe Skin Clinic Funnel",
+                video: dermaluxeSkinClinicFunnel,
+                copy: "A premium booking funnel for DermaLuxe Skin Clinic that blends medical credibility with aesthetic elegance. Designed to convert visitors into booked consultations through compelling service showcases, client testimonials, and a frictionless appointment scheduling flow.",
+                previewUrl: "https://demo.connettiq.com/home",
+              },
+              {
+                id: "funnel-9",
+                title: "Prime Derma Funnel",
+                video: primeDermaFunnel,
+                copy: "A conversion-optimized funnel for Prime Derma that highlights professional dermatology care with persuasive service breakdowns, trust-building social proof, and a streamlined booking CTA — guiding cold traffic from curiosity to confirmed appointments.",
+                previewUrl: "https://app.connettiq.com/v2/preview/1ncS9EGM1egwCunQFlu1",
               },
               {
                 id: "funnel-1",
