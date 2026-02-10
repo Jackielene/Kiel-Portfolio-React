@@ -31,9 +31,9 @@ import newFunnel2 from "../assets/New Funnel 2.mp4";
 import permadeckFunnel from "../assets/Permadeck.mp4";
 import schoolFreightWorksFunnel from "../assets/School Freight Works.mp4";
 import beautyBizProFunnel from "../assets/BeatuyBizPro.mp4";
-import caliCustomWeldingFunnel from "../assets/Cali Custom Welding.mp4";
-import casaNegraCollectionFunnel from "../assets/Casa Negra Collection.mp4";
-import dermaluxeSkinClinicFunnel from "../assets/Dermaluxe Skin Clinic.mp4";
+import caliCustomImage from "../assets/calicustom.png";
+import casaNegraImage from "../assets/casa-negra.png";
+import dermaluxeImage from "../assets/dermaluxe.png";
 import primeDermaFunnel from "../assets/Prime Derma.mp4";
 import automation1 from "../assets/Automation 1.png";
 import automation2 from "../assets/Automation 2.png";
@@ -51,7 +51,8 @@ interface Project {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image?: string;
+  video?: string;
   technologies: Technology[];
   liveUrl?: string;
   githubUrl?: string;
@@ -62,25 +63,71 @@ interface Project {
 const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // Mock data for projects - ReactJS projects prioritized first
+  // Mock data for projects - Website builds first (Casa Negra, Cali Custom), then rest
   const projects: Project[] = [
+    {
+      id: "14",
+      title: "Casa Negra Collection",
+      description:
+        "An elegant website for Casa Negra Collection that highlights their curated collection with sophisticated design, immersive storytelling, and seamless user experience that converts visitors into customers.",
+      image: casaNegraImage,
+      technologies: [
+        { name: "GoHighLevel" },
+        { name: "HTML" },
+        { name: "CSS" },
+        { name: "JavaScript" },
+      ],
+      liveUrl: "https://casanegracollection.com",
+      detailedDescription:
+        "Casa Negra Collection is an elegantly crafted website that showcases a curated collection with sophisticated design and immersive storytelling. Built on GoHighLevel with custom HTML, CSS, and JavaScript, the site delivers a seamless user experience that guides visitors through the brand's offerings and converts them into customers through strategic design and compelling visuals.",
+    },
+    {
+      id: "15",
+      title: "Cali Custom Welding",
+      description:
+        "A conversion-focused website for Cali Custom Welding, showcasing their premium welding services with compelling visuals and strategic trust markers that guide visitors toward booking consultations.",
+      image: caliCustomImage,
+      technologies: [
+        { name: "GoHighLevel" },
+        { name: "HTML" },
+        { name: "CSS" },
+        { name: "JavaScript" },
+      ],
+      liveUrl: "https://calicustomwelding.com",
+      detailedDescription:
+        "Cali Custom Welding is a conversion-focused website that showcases premium welding services with compelling visuals and strategic trust markers. Built with GoHighLevel, HTML, CSS, and JavaScript, the site guides visitors toward booking consultations through clear service presentation and strong calls to action.",
+    },
+    {
+      id: "16",
+      title: "DermaLuxe Skin Clinic",
+      description:
+        "A premium booking website for DermaLuxe Skin Clinic that blends medical credibility with aesthetic elegance. Designed to convert visitors into booked consultations through compelling service showcases, client testimonials, and a frictionless appointment scheduling flow.",
+      image: dermaluxeImage,
+      technologies: [
+        { name: "GoHighLevel" },
+        { name: "HTML" },
+        { name: "CSS" },
+        { name: "JavaScript" },
+      ],
+      liveUrl: "https://demo.connettiq.com/dermaluxe",
+      detailedDescription:
+        "DermaLuxe Skin Clinic is a premium booking website that blends medical credibility with aesthetic elegance. Built with GoHighLevel, HTML, CSS, and JavaScript, the site is designed to convert visitors into booked consultations through compelling service showcases, client testimonials, and a frictionless appointment scheduling flow.",
+    },
     // ReactJS Projects (Prioritized)
     {
-      id: "12",
-      title: "Tropiride Siargao",
-      description: "A web application made from Laravel and ReactJS with a real-time GPS tracking system for vehicle reservation tracking.",
-      image: project12,
+      id: "6",
+      title: "Cosmos",
+      description: "Cosmos is an interactive educational website that explores the wonders of the solar system.",
+      image: project6,
       technologies: [
-        { name: "Laravel" },
         { name: "ReactJS" },
-        { name: "GPS Tracking" },
-        { name: "Real-time System" },
-        { name: "MySQL" },
+        { name: "Tailwind CSS" },
+        { name: "Framer Motion" },
       ],
-      liveUrl: "https://example.com/tropiride",
-      githubUrl: "https://github.com/Jackielene/Tropiride",
+      liveUrl: "https://cosmos-six.vercel.app/",
+      githubUrl: "https://github.com/Jackielene/Cosmos",
       detailedDescription:
-        "Tropiride Siargao is a comprehensive web application built with Laravel and ReactJS that revolutionizes vehicle reservation and tracking. The platform features a real-time GPS tracking system that allows users to monitor vehicle locations in real-time, making it perfect for rental services and transportation management. This innovative solution combines robust backend architecture with a modern, responsive frontend to deliver seamless vehicle reservation and tracking capabilities.",
+        "Cosmos is a modern web experience that explores the beauty, complexity, and wonder of the universe through an interactive and visually captivating platform. Designed to educate and inspire, Cosmos provides users with rich, dynamic content on celestial bodies, galaxies, space missions, and astronomical phenomena.",
     },
     {
       id: "13",
@@ -134,19 +181,21 @@ const ProjectsSection = () => {
         "InstaBooth is a web-based digital photobooth that allows users to capture fun and memorable moments with a creative twist. Designed with user experience in mind, the platform lets users take instant polaroid-style photos, apply filters, choose from a variety of frames and stickers, and download the final image as a PNG file — all from the convenience of their browser.",
     },
     {
-      id: "6",
-      title: "Cosmos",
-      description: "Cosmos is an interactive educational website that explores the wonders of the solar system.",
-      image: project6,
+      id: "12",
+      title: "Tropiride Siargao",
+      description: "A web application made from Laravel and ReactJS with a real-time GPS tracking system for vehicle reservation tracking.",
+      image: project12,
       technologies: [
+        { name: "Laravel" },
         { name: "ReactJS" },
-        { name: "Tailwind CSS" },
-        { name: "Framer Motion" },
+        { name: "GPS Tracking" },
+        { name: "Real-time System" },
+        { name: "MySQL" },
       ],
-      liveUrl: "https://cosmos-six.vercel.app/",
-      githubUrl: "https://github.com/Jackielene/Cosmos",
+      liveUrl: "https://example.com/tropiride",
+      githubUrl: "https://github.com/Jackielene/Tropiride",
       detailedDescription:
-        "Cosmos is a modern web experience that explores the beauty, complexity, and wonder of the universe through an interactive and visually captivating platform. Designed to educate and inspire, Cosmos provides users with rich, dynamic content on celestial bodies, galaxies, space missions, and astronomical phenomena.",
+        "Tropiride Siargao is a comprehensive web application built with Laravel and ReactJS that revolutionizes vehicle reservation and tracking. The platform features a real-time GPS tracking system that allows users to monitor vehicle locations in real-time, making it perfect for rental services and transportation management. This innovative solution combines robust backend architecture with a modern, responsive frontend to deliver seamless vehicle reservation and tracking capabilities.",
     },
     // Non-ReactJS Projects
     {
@@ -329,8 +378,9 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6 }}
           className="space-y-8"
         >
-          <div className="text-center space-y-4">
-            <SAOText variant="h3">High-Converting Funnel Builds</SAOText>
+          <div id="funnel-builds" className="scroll-mt-24">
+            <div className="text-center space-y-4">
+              <SAOText variant="h3">High-Converting Funnel Builds</SAOText>
             <p className="text-muted-foreground max-w-3xl mx-auto">
               I craft revenue-focused funnels that combine persuasive storytelling,
               frictionless UX, and data-backed conversion tactics. Below are
@@ -364,32 +414,11 @@ const ProjectsSection = () => {
                 previewUrl: "https://app.beautybizai.com/v2/preview/xAc09krKPbcyZEk3MQBV?notrack=true",
               },
               {
-                id: "funnel-6",
-                title: "Cali Custom Welding Funnel",
-                video: caliCustomWeldingFunnel,
-                copy: "A conversion-focused funnel designed for Cali Custom Welding, showcasing their premium welding services with compelling visuals and strategic trust markers that guide visitors toward booking consultations.",
-                previewUrl: "https://app.thesyndra.com/v2/preview/iKPQhUNAj3WRTZJhNuMT",
-              },
-              {
-                id: "funnel-7",
-                title: "Casa Negra Collection Funnel",
-                video: casaNegraCollectionFunnel,
-                copy: "An elegant funnel for Casa Negra Collection that highlights their curated collection with sophisticated design, immersive storytelling, and seamless user experience that converts visitors into customers.",
-                previewUrl: "https://casanegracollection.com",
-              },
-              {
-                id: "funnel-8",
-                title: "DermaLuxe Skin Clinic Funnel",
-                video: dermaluxeSkinClinicFunnel,
-                copy: "A premium booking funnel for DermaLuxe Skin Clinic that blends medical credibility with aesthetic elegance. Designed to convert visitors into booked consultations through compelling service showcases, client testimonials, and a frictionless appointment scheduling flow.",
-                previewUrl: "https://demo.connettiq.com/home",
-              },
-              {
                 id: "funnel-9",
                 title: "Prime Derma Funnel",
                 video: primeDermaFunnel,
                 copy: "A conversion-optimized funnel for Prime Derma that highlights professional dermatology care with persuasive service breakdowns, trust-building social proof, and a streamlined booking CTA — guiding cold traffic from curiosity to confirmed appointments.",
-                previewUrl: "https://app.connettiq.com/v2/preview/1ncS9EGM1egwCunQFlu1",
+                previewUrl: "https://demo.connettiq.com/prime-derma",
               },
               {
                 id: "funnel-1",
@@ -446,6 +475,8 @@ const ProjectsSection = () => {
               </motion.div>
             ))}
           </div>
+          </div>
+          <div id="website-builds" className="scroll-mt-24">
           <div className="text-center space-y-3 mt-12">
             <SAOText variant="h3">Website Builds</SAOText>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -454,7 +485,6 @@ const ProjectsSection = () => {
               and thoughtful UX/UI.
             </p>
           </div>
-        </motion.div>
 
         <motion.div
           variants={containerVariants}
@@ -492,13 +522,24 @@ const ProjectsSection = () => {
                   {/* Animated gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay" />
                   
-                  <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.08 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  />
+                  {project.video ? (
+                    <video
+                      src={project.video}
+                      autoPlay
+                      loop
+                      playsInline
+                      muted
+                      className="w-full h-full object-cover pointer-events-none"
+                    />
+                  ) : (
+                    <motion.img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.08 }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                    />
+                  )}
                   
                   {/* Corner accent */}
                   <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -592,6 +633,25 @@ const ProjectsSection = () => {
                     )}
                   </div>
 
+                  {project.liveUrl && (
+                    <Button
+                      asChild
+                      size="sm"
+                      className="mt-4 w-fit px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground"
+                    >
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        Preview
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  )}
+
                   {/* View project indicator */}
                   <motion.div 
                     className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-purple-500 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -607,6 +667,8 @@ const ProjectsSection = () => {
               </Card>
             </motion.div>
           ))}
+        </motion.div>
+          </div>
         </motion.div>
 
         <motion.div
@@ -770,13 +832,24 @@ const ProjectsSection = () => {
           <DialogContent className="max-w-5xl w-[95vw] max-h-[95vh] p-0 overflow-y-auto bg-background/95 backdrop-blur-sm border-none shadow-2xl rounded-xl mx-2 sm:mx-4">
             <DialogTitle className="sr-only">{selectedProject.title} - Project Details</DialogTitle>
             <div className="relative">
-              {/* Hero image with gradient overlay */}
+              {/* Hero image/video with gradient overlay */}
               <div className="relative h-48 sm:h-64 md:h-80 w-full overflow-hidden rounded-t-xl">
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
+                {selectedProject.video ? (
+                  <video
+                    src={selectedProject.video}
+                    autoPlay
+                    loop
+                    playsInline
+                    muted
+                    className="w-full h-full object-cover pointer-events-none"
+                  />
+                ) : (
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full h-full object-cover"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/95"></div>
                 
                 {/* Close button positioned at top-right with improved visibility */}
