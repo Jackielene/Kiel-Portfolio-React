@@ -26,15 +26,14 @@ import project10 from "../assets/project-10.png";
 import project11 from "../assets/project-11.png";
 import project12 from "../assets/project 12.png";
 import project13 from "../assets/project 13.png";
-import newFunnel1 from "../assets/New Funnel 1.mp4";
-import newFunnel2 from "../assets/New Funnel 2.mp4";
-import permadeckFunnel from "../assets/Permadeck.mp4";
-import schoolFreightWorksFunnel from "../assets/School Freight Works.mp4";
-import beautyBizProFunnel from "../assets/BeatuyBizPro.mp4";
+import beautyBizImage from "../assets/BeautyBiz.png";
+import permadeckImage from "../assets/Permadeck.png";
+import schoolFreightImage from "../assets/School-Freight.png";
+import primeDermaImage from "../assets/Prime-Derma.png";
 import caliCustomImage from "../assets/calicustom.png";
+import pizzaLAImage from "../assets/Pizza-LA.png";
 import casaNegraImage from "../assets/casa-negra.png";
 import dermaluxeImage from "../assets/dermaluxe.png";
-import primeDermaFunnel from "../assets/Prime Derma.mp4";
 import automation1 from "../assets/Automation 1.png";
 import automation2 from "../assets/Automation 2.png";
 import automation3 from "../assets/Automation 3.png";
@@ -96,6 +95,22 @@ const ProjectsSection = () => {
       liveUrl: "https://calicustomwelding.com",
       detailedDescription:
         "Cali Custom Welding is a conversion-focused website that showcases premium welding services with compelling visuals and strategic trust markers. Built with GoHighLevel, HTML, CSS, and JavaScript, the site guides visitors toward booking consultations through clear service presentation and strong calls to action.",
+    },
+    {
+      id: "17",
+      title: "Pizza LA",
+      description:
+        "A fast-food restaurant website for Pizza LA, built to showcase the menu, promote orders, and deliver a quick, appetizing experience that turns hungry visitors into customers.",
+      image: pizzaLAImage,
+      technologies: [
+        { name: "GoHighLevel" },
+        { name: "HTML" },
+        { name: "CSS" },
+        { name: "JavaScript" },
+      ],
+      liveUrl: "https://mypizzala.com/",
+      detailedDescription:
+        "Pizza LA is a fast-food restaurant website built on GoHighLevel with custom HTML, CSS, and JavaScript. The site highlights the menu, brand, and ordering experience to help visitors discover offerings and convert with a clear, mobile-friendly design.",
     },
     {
       id: "16",
@@ -395,42 +410,30 @@ const ProjectsSection = () => {
               {
                 id: "funnel-3",
                 title: "Permadeck Exterior Concrete Coatings Funnel",
-                video: permadeckFunnel,
+                image: permadeckImage,
                 copy: "Permadeck is a next-generation epoxy resurfacing system that transforms concrete into a durable, slip-resistant, and low-maintenance finish.",
                 previewUrl: "https://app.thesyndra.com/v2/preview/rGGoeTWh1awMbaFBm7oq",
               },
               {
                 id: "funnel-4",
                 title: "School Freight Works Funnel",
-                video: schoolFreightWorksFunnel,
+                image: schoolFreightImage,
                 copy: "Portfolio funnel showing School Freight Works handling USDA commodity foods and cafeteria equipment with cold-chain monitoring, USDA-compliant drivers, and end-to-end delivery, install, and removal—ending in a clear CTA.",
                 previewUrl: "https://app.thesyndra.com/v2/preview/pq0Uqt0C7PzUD6RMwoYL",
               },
               {
                 id: "funnel-5",
                 title: "Beauty Biz Pro Funnel",
-                video: beautyBizProFunnel,
+                image: beautyBizImage,
                 copy: "Salon-focused funnel that spotlights premium beauty services, showcases client transformations, and routes visitors into quick-booking CTAs to turn curiosity into appointments.",
                 previewUrl: "https://app.beautybizai.com/v2/preview/xAc09krKPbcyZEk3MQBV?notrack=true",
               },
               {
                 id: "funnel-9",
                 title: "Prime Derma Funnel",
-                video: primeDermaFunnel,
+                image: primeDermaImage,
                 copy: "A conversion-optimized funnel for Prime Derma that highlights professional dermatology care with persuasive service breakdowns, trust-building social proof, and a streamlined booking CTA — guiding cold traffic from curiosity to confirmed appointments.",
                 previewUrl: "https://demo.connettiq.com/prime-derma",
-              },
-              {
-                id: "funnel-1",
-                title: "Memento Coaching Hub Prime Lead Capture Funnel",
-                video: newFunnel1,
-                copy: "Engineered for coaches who need a consistent stream of discovery calls. This funnel warms visitors with a credibility-packed hero section, nurtures objections through social proof, and closes with a scarcity-driven booking flow.",
-              },
-              {
-                id: "funnel-2",
-                title: "Growth Catalyst Consulting Premium Offer Launch Funnel",
-                video: newFunnel2,
-                copy: "Built for a high-ticket launch, this funnel combines cinematic visuals, bold value stacking, and an interactive walkthrough that keeps attention anchored until the CTA fires. Perfect for productized services and live cohorts.",
               },
             ].map((funnel, index) => (
               <motion.div
@@ -442,14 +445,22 @@ const ProjectsSection = () => {
                 className="rounded-2xl border border-white/10 bg-card/60 backdrop-blur-lg shadow-xl p-6 space-y-4"
               >
                 <div className="relative rounded-xl overflow-hidden shadow-2xl">
-                  <video
-                    src={funnel.video}
-                    autoPlay
-                    loop
-                    playsInline
-                    muted
-                    className="w-full h-full aspect-video object-cover pointer-events-none"
-                  />
+                  {funnel.image ? (
+                    <img
+                      src={funnel.image}
+                      alt={funnel.title}
+                      className="w-full h-full aspect-video object-cover pointer-events-none"
+                    />
+                  ) : (
+                    <video
+                      src={funnel.video}
+                      autoPlay
+                      loop
+                      playsInline
+                      muted
+                      className="w-full h-full aspect-video object-cover pointer-events-none"
+                    />
+                  )}
                 </div>
                 <h4 className="text-xl font-semibold">{funnel.title}</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">
