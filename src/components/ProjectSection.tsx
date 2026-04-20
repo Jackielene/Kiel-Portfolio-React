@@ -41,6 +41,11 @@ import automation4 from "../assets/Automation 4.png";
 import email1 from "../assets/Email 1.png";
 import email2 from "../assets/Email 2.png";
 import email3 from "../assets/Email 3.png";
+import hopeAfternoonWellnessImage from "../assets/Hope Afternoon Wellness.png";
+import southamptonGardenersImage from "../assets/southampton gardeners.png";
+import marketingMunsterImage from "../assets/Marketing-Munster.png";
+import usTrailersImage from "../assets/US Trailers.png";
+import onTheRunPizzaImage from "../assets/On-The-Run-Pizza.png";
 interface Technology {
   name: string;
   icon?: React.ReactNode;
@@ -64,6 +69,53 @@ const ProjectsSection = () => {
 
   // Mock data for projects - Website builds first (Casa Negra, Cali Custom), then rest
   const projects: Project[] = [
+    {
+      id: "18",
+      title: "Marketing Munster",
+      description:
+        "A high-performance agency website crafted for Marketing Munster to position their growth systems, showcase social proof, and drive strategy call bookings with conversion-focused structure.",
+      image: marketingMunsterImage,
+      technologies: [
+        { name: "GoHighLevel" },
+        { name: "HTML" },
+        { name: "CSS" },
+        { name: "JavaScript" },
+      ],
+      liveUrl: "https://marketingmunster.com/",
+      detailedDescription:
+        "Marketing Munster is a conversion-focused agency website designed to present high-performance growth systems with clarity and authority. The build emphasizes persuasive messaging, trust markers, and strategic call-to-actions to turn qualified traffic into booked strategy calls.",
+    },
+    {
+      id: "19",
+      title: "US Trailers",
+      description:
+        "A clean, conversion-ready website for US Trailers that showcases trailer offerings, communicates credibility, and routes visitors to high-intent inquiry actions.",
+      image: usTrailersImage,
+      technologies: [
+        { name: "GoHighLevel" },
+        { name: "HTML" },
+        { name: "CSS" },
+        { name: "JavaScript" },
+      ],
+      liveUrl: "https://fjy921kkd9.wpdns.site/#",
+      detailedDescription:
+        "US Trailers is a streamlined website build designed to highlight inventory, trust, and clear next steps for prospective buyers. The structure prioritizes fast comprehension and action, helping visitors move quickly from browsing to inquiry.",
+    },
+    {
+      id: "20",
+      title: "On The Run Pizza",
+      description:
+        "A restaurant website for On The Run Pizza designed to spotlight menu offers, simplify ordering journeys, and increase customer conversions through a fast, mobile-first experience.",
+      image: onTheRunPizzaImage,
+      technologies: [
+        { name: "GoHighLevel" },
+        { name: "HTML" },
+        { name: "CSS" },
+        { name: "JavaScript" },
+      ],
+      detailedDescription:
+        "On The Run Pizza is a conversion-oriented restaurant website focused on appetizing presentation, clear offers, and frictionless order pathways. The build is optimized for speed and mobile usability so customers can decide and act quickly.",
+    },
     {
       id: "14",
       title: "Casa Negra Collection",
@@ -393,6 +445,127 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6 }}
           className="space-y-8"
         >
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card/80 to-purple-500/10 p-8 md:p-12 shadow-[0_30px_120px_rgba(0,0,0,0.45)]"
+          >
+            <div className="pointer-events-none absolute -top-20 -left-24 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-24 -right-20 h-72 w-72 rounded-full bg-purple-500/20 blur-3xl" />
+
+            <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                className="lg:col-span-3 space-y-6"
+              >
+                <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary shadow-md shadow-primary/20">
+                  Premium Conversion Services
+                </div>
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight">
+                  Turn More Visitors Into
+                  <motion.span
+                    className="mt-2 inline-flex w-fit rounded-xl border border-fuchsia-300/70 bg-gradient-to-r from-fuchsia-500/30 via-purple-500/30 to-violet-500/30 px-4 py-2 text-white shadow-[0_0_40px_rgba(217,70,239,0.55)]"
+                    animate={{
+                      y: [0, -3, 0],
+                      scale: [1, 1.02, 1],
+                      textShadow: [
+                        "0 0 10px rgba(255,255,255,0.75), 0 0 24px rgba(232,121,249,0.65), 0 0 42px rgba(167,139,250,0.55)",
+                        "0 0 18px rgba(255,255,255,0.95), 0 0 34px rgba(232,121,249,0.9), 0 0 56px rgba(167,139,250,0.8)",
+                        "0 0 10px rgba(255,255,255,0.75), 0 0 24px rgba(232,121,249,0.65), 0 0 42px rgba(167,139,250,0.55)",
+                      ],
+                    }}
+                    transition={{
+                      duration: 1.9,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <span className="text-2xl md:text-3xl lg:text-4xl font-black leading-none tracking-tight bg-gradient-to-r from-white via-fuchsia-100 to-violet-100 bg-clip-text text-transparent">
+                      Booked Calls and Paying Clients
+                    </span>
+                  </motion.span>
+                </h3>
+                <p className="text-lg md:text-xl text-foreground/90 leading-relaxed max-w-2xl font-medium">
+                  Your brand should do more than look good, it should consistently generate
+                  qualified leads, booked appointments, and predictable revenue.
+                </p>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                  From positioning and messaging to UX and follow-up systems, every build is
+                  engineered to reduce friction, capture high-intent leads, and help you
+                  close more deals without burning time on manual chasing.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <motion.div
+                    className="relative rounded-xl p-[1.5px] bg-[linear-gradient(110deg,rgba(255,255,255,0.1)_20%,rgba(232,121,249,0.95)_45%,rgba(167,139,250,0.95)_55%,rgba(255,255,255,0.1)_80%)] bg-[length:220%_100%] shadow-[0_0_28px_rgba(217,70,239,0.45)]"
+                    animate={{ backgroundPosition: ["220% 0%", "-20% 0%"] }}
+                    transition={{ duration: 2.1, repeat: Infinity, ease: "linear" }}
+                  >
+                    <Button
+                      asChild
+                      size="lg"
+                      className="px-6 py-6 text-base bg-primary/95 hover:bg-primary text-primary-foreground border border-fuchsia-300/60 rounded-[11px] shadow-lg shadow-primary/30"
+                    >
+                      <a
+                        href="https://calendly.com/pomoy-jackielene-s/new-meeting"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2"
+                      >
+                        Schedule a Call
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  </motion.div>
+                  <div className="inline-flex items-center rounded-full border border-white/20 bg-background/40 px-4 py-2 text-sm text-muted-foreground">
+                    Limited onboarding slots each month
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="lg:col-span-2 space-y-4"
+              >
+                {[
+                  {
+                    title: "High-Converting Funnels",
+                    copy: "Strategic landing experiences built to turn cold clicks into qualified leads.",
+                  },
+                  {
+                    title: "Premium Website Builds",
+                    copy: "Brand-forward websites that look world-class and perform with clear conversion paths.",
+                  },
+                  {
+                    title: "Automations That Close Faster",
+                    copy: "Follow-up systems and CRM workflows that nurture leads until they are ready to buy.",
+                  },
+                ].map((service, index) => (
+                  <motion.div
+                    key={service.title}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.25 + index * 0.08 }}
+                    className="rounded-2xl border border-white/15 bg-background/50 backdrop-blur-md p-5 shadow-lg hover:border-primary/40 transition-colors duration-300"
+                  >
+                    <h4 className="text-lg font-semibold">{service.title}</h4>
+                    <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                      {service.copy}
+                    </p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+
           <div id="funnel-builds" className="scroll-mt-24">
             <div className="text-center space-y-4">
               <SAOText variant="h3">High-Converting Funnel Builds</SAOText>
@@ -407,6 +580,20 @@ const ProjectsSection = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {[
+              {
+                id: "funnel-10",
+                title: "Hope Afternoon Wellness Funnel",
+                image: hopeAfternoonWellnessImage,
+                copy: "A Women's Month campaign funnel for Hope Afternoon Wellness focused on heartfelt storytelling, mission-driven product positioning, and a secure checkout experience designed to convert support into direct impact.",
+                previewUrl: "https://app.thesyndra.com/v2/preview/uzX0twJjfUY8TsvRTDYY",
+              },
+              {
+                id: "funnel-11",
+                title: "Southampton Gardens Funnel",
+                image: southamptonGardenersImage,
+                copy: "A local-services funnel for Southampton Gardens that balances authority, trust badges, and clear quote CTAs to turn homeowners into qualified leads quickly.",
+                previewUrl: "https://app.locallaunchpad.co.uk/v2/preview/dYCAvr7Mmb6q4umMIN4C",
+              },
               {
                 id: "funnel-3",
                 title: "Permadeck Exterior Concrete Coatings Funnel",
